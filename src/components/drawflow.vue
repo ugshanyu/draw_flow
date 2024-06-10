@@ -48,6 +48,11 @@ import BasePrompt from './nodes/base_prompt.vue'
 import CasePrompt from './nodes/case_prompt.vue'
 import Input from './nodes/input.vue'
 import Add from './nodes/add.vue'
+import GlobalVariable from './nodes/variable.vue'
+import LlmGenerate from './nodes/llmGenerate.vue'
+import FbWebhook from './nodes/fbWebhook.vue'
+import Switch from './nodes/switch.vue'
+import SwitchCase from './nodes/switchCase.vue'
 
 
 
@@ -103,7 +108,42 @@ export default {
           item: 'add',
           input:2,
           output:1
-        }
+        },
+        {
+          name: 'GlobalVariable',
+          color: 'green',
+          item: 'globalVariable',
+          input:0,
+          output:0
+        },
+        {
+          name: 'LLMGenerate',
+          color: 'darkwhite',
+          item: 'llmGenerate',
+          input:1,
+          output:1
+        },
+        {
+          name: 'FbWebhook',
+          color: 'darkblue',
+          item: 'fbWebhook',
+          input:1,
+          output:1
+        },
+        {
+          name: 'Switch',
+          color: 'darkblue',
+          item: 'switch',
+          input:1,
+          output:1
+        },
+        {
+          name: 'SwitchCase',
+          color: 'darkblue',
+          item: 'switchCase',
+          input:1,
+          output:1
+        },
     ])
    
    const editor = shallowRef({})
@@ -180,6 +220,12 @@ export default {
         editor.value.registerNode('case_prompt', CasePrompt, {}, {});
         editor.value.registerNode('input', Input, {}, {});
         editor.value.registerNode('add', Add, {}, {})
+        editor.value.registerNode('globalVariable', GlobalVariable, {}, {})
+        editor.value.registerNode('llmGenerate', LlmGenerate, {}, {})
+        editor.value.registerNode('fbWebhook', FbWebhook, {}, {})
+        editor.value.registerNode('switch', Switch, {}, {})
+        editor.value.registerNode('switchCase', SwitchCase, {}, {})
+        
 
        editor.value.import({
           "drawflow": {
