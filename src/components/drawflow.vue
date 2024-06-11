@@ -53,6 +53,7 @@ import LlmGenerate from './nodes/llmGenerate.vue'
 import FbWebhook from './nodes/fbWebhook.vue'
 import Switch from './nodes/switch.vue'
 import SwitchCase from './nodes/switchCase.vue'
+import ExtractOutput from './nodes/extractOutput.vue'
 
 
 
@@ -144,6 +145,13 @@ export default {
           input:1,
           output:1
         },
+        {
+          name: 'Extract Output',
+          color: 'darkblue',
+          item: 'extractOutput',
+          input:1,
+          output:1
+        },
     ])
    
    const editor = shallowRef({})
@@ -225,6 +233,7 @@ export default {
         editor.value.registerNode('fbWebhook', FbWebhook, {}, {})
         editor.value.registerNode('switch', Switch, {}, {})
         editor.value.registerNode('switchCase', SwitchCase, {}, {})
+        editor.value.registerNode('extractOutput', ExtractOutput, {}, {})
         
 
        editor.value.import({

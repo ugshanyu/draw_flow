@@ -1,23 +1,15 @@
-def llmGenerate(a, b, c):
-    print(a, b, c)
-    return "CaseTwo"
+We = 'TESTING'
 
+node11 = llmGenerate('Hello', 'World', None)
 
+node10 = extractOutput(node11)
 
-IceTop = 'Hello'
+match node10:
 
-node14 = llmGenerate('IceTop', 'Hello', None)
+    case 'world':
 
-match node14:
+        node18 =         llmGenerate('321', '123', node10)
 
-    case 'CaseTwo':
+    case 'hello':
 
-        node16 =         llmGenerate('CaseTwoTest', 'me', node14)
-
-    case 'CaseThree':
-
-        node17 =         llmGenerate('CaseThreeTest', 'Why', node14)
-
-    case 'caseOne':
-
-        node15 =         llmGenerate('caseOneTest', 'on', node14)
+        node20 =         llmGenerate('456', '876', node10)
