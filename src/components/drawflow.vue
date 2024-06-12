@@ -54,8 +54,8 @@ import FbWebhook from './nodes/fbWebhook.vue'
 import Switch from './nodes/switch.vue'
 import SwitchCase from './nodes/switchCase.vue'
 import ExtractOutput from './nodes/extractOutput.vue'
-
-
+import FunctionWrapper from './nodes/functionWrapper.vue'
+import VariableSet from './nodes/variableSet.vue'
 
 export default {
   name: 'drawflow',
@@ -152,6 +152,27 @@ export default {
           input:1,
           output:1
         },
+        {
+          name: 'Function Wrapper',
+          color: 'darkblue',
+          item: 'functionWrapper',
+          input:1,
+          output:1
+        },
+        {
+          name: 'Function Wrapper',
+          color: 'darkblue',
+          item: 'functionWrapper',
+          input:1,
+          output:1
+        },
+        {
+          name: 'Variable Set',
+          color: 'darkblue',
+          item: 'variableSet',
+          input:1,
+          output:1
+        }
     ])
    
    const editor = shallowRef({})
@@ -224,16 +245,18 @@ export default {
        editor.value.registerNode('Node2', Node2, {}, {});
        editor.value.registerNode('Node3', Node3, {}, {});
        editor.value.registerNode('Node3', Node3, {}, {});
-        editor.value.registerNode('base_prompt', BasePrompt, {}, {});
-        editor.value.registerNode('case_prompt', CasePrompt, {}, {});
-        editor.value.registerNode('input', Input, {}, {});
-        editor.value.registerNode('add', Add, {}, {})
-        editor.value.registerNode('globalVariable', GlobalVariable, {}, {})
-        editor.value.registerNode('llmGenerate', LlmGenerate, {}, {})
-        editor.value.registerNode('fbWebhook', FbWebhook, {}, {})
-        editor.value.registerNode('switch', Switch, {}, {})
-        editor.value.registerNode('switchCase', SwitchCase, {}, {})
-        editor.value.registerNode('extractOutput', ExtractOutput, {}, {})
+       editor.value.registerNode('base_prompt', BasePrompt, {}, {});
+       editor.value.registerNode('case_prompt', CasePrompt, {}, {});
+       editor.value.registerNode('input', Input, {}, {});
+       editor.value.registerNode('add', Add, {}, {})
+       editor.value.registerNode('globalVariable', GlobalVariable, {}, {})
+       editor.value.registerNode('llmGenerate', LlmGenerate, {}, {})
+       editor.value.registerNode('fbWebhook', FbWebhook, {}, {})
+       editor.value.registerNode('switch', Switch, {}, {})
+       editor.value.registerNode('switchCase', SwitchCase, {}, {})
+       editor.value.registerNode('extractOutput', ExtractOutput, {}, {})
+       editor.value.registerNode('functionWrapper', FunctionWrapper, {}, {})
+       editor.value.registerNode('variableSet', VariableSet, {}, {})
         
 
        editor.value.import({
