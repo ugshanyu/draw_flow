@@ -56,6 +56,8 @@ import SwitchCase from './nodes/switchCase.vue'
 import ExtractOutput from './nodes/extractOutput.vue'
 import FunctionWrapper from './nodes/functionWrapper.vue'
 import VariableSet from './nodes/variableSet.vue'
+import ChangeTopic from './nodes/changeTopic.vue'
+import HandleAssistant from './nodes/handleAssistant.vue'
 
 export default {
   name: 'drawflow',
@@ -172,6 +174,20 @@ export default {
           item: 'variableSet',
           input:1,
           output:1
+        },
+        {
+          name: 'Handle Assistant',
+          color: 'darkblue',
+          item: 'handleAssistant',
+          input:1,
+          output:1
+        },
+        {
+          name: 'Change Topic',
+          color: 'darkblue',
+          item: 'changeTopic',
+          input:1,
+          output:1
         }
     ])
    
@@ -257,92 +273,684 @@ export default {
        editor.value.registerNode('extractOutput', ExtractOutput, {}, {})
        editor.value.registerNode('functionWrapper', FunctionWrapper, {}, {})
        editor.value.registerNode('variableSet', VariableSet, {}, {})
-        
+       editor.value.registerNode('handleAssistant', HandleAssistant, {}, {})
+       editor.value.registerNode('changeTopic', ChangeTopic, {}, {})
 
        editor.value.import({
-          "drawflow": {
-            "Home": {
+  "drawflow": {
+    "Home": {
+      "data": {
+        "15": {
+          "id": 15,
+          "name": "globalVariable",
+          "data": {
+            "id": 15,
+            "name": "globalVariable",
+            "data": {
+              "id": 15,
+              "name": "globalVariable",
               "data": {
-                "7": {
-                  "id": 7,
-                  "name": "add",
-                  "data": {},
-                  "class": "add",
-                  "html": "add",
-                  "typenode": "vue",
-                  "inputs": {
-                    "input_1": {
-                      "connections": [
-                        {
-                          "node": "8",
-                          "input": "output_1"
-                        }
-                      ]
-                    },
-                    "input_2": {
-                      "connections": [
-                        {
-                          "node": "9",
-                          "input": "output_1"
-                        }
-                      ]
-                    }
-                  },
-                  "outputs": {
-                    "output_1": {
-                      "connections": []
-                    }
-                  },
-                  "pos_x": 563,
-                  "pos_y": 198
-                },
-                "8": {
-                  "id": 8,
-                  "name": "input",
-                  "data": {},
-                  "class": "input",
-                  "html": "input",
-                  "typenode": "vue",
-                  "inputs": {},
-                  "outputs": {
-                    "output_1": {
-                      "connections": [
-                        {
-                          "node": "7",
-                          "output": "input_1"
-                        }
-                      ]
-                    }
-                  },
-                  "pos_x": 174,
-                  "pos_y": 72
-                },
-                "9": {
-                  "id": 9,
-                  "name": "input",
-                  "data": {},
-                  "class": "input",
-                  "html": "input",
-                  "typenode": "vue",
-                  "inputs": {},
-                  "outputs": {
-                    "output_1": {
-                      "connections": [
-                        {
-                          "node": "7",
-                          "output": "input_2"
-                        }
-                      ]
-                    }
-                  },
-                  "pos_x": 179,
-                  "pos_y": 365
-                }
-              }
+                "key": "systemPrompt",
+                "valueHolder": "This is system prompt",
+                "method": "string"
+              },
+              "class": "globalVariable",
+              "html": "globalVariable",
+              "typenode": "vue",
+              "inputs": {},
+              "outputs": {},
+              "pos_x": 699,
+              "pos_y": 168,
+              "key": "systemPrompt",
+              "valueholder": "This is system prompt",
+              "valueHolder": "THIS IS SYSTEMPROMPT",
+              "method": "string"
+            },
+            "class": "globalVariable",
+            "html": "globalVariable",
+            "typenode": "vue",
+            "inputs": {},
+            "outputs": {},
+            "pos_x": -2303.4285714285716,
+            "pos_y": 94,
+            "valueholder": "THIS IS SYSTEMPROMPT"
+          },
+          "class": "globalVariable",
+          "html": "globalVariable",
+          "typenode": "vue",
+          "inputs": {},
+          "outputs": {},
+          "pos_x": -2303,
+          "pos_y": 94
+        },
+        "23": {
+          "id": 23,
+          "name": "fbWebhook",
+          "data": {},
+          "class": "fbWebhook",
+          "html": "fbWebhook",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": []
             }
-          }
-        })
-  })
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "37",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -2522,
+          "pos_y": 849
+        },
+        "35": {
+          "id": 35,
+          "name": "extractOutput",
+          "data": {},
+          "class": "extractOutput",
+          "html": "extractOutput",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "37",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "42",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -1803,
+          "pos_y": 848
+        },
+        "37": {
+          "id": 37,
+          "name": "variableSet",
+          "data": {
+            "id": 37,
+            "name": "variableSet",
+            "data": {
+              "id": 37,
+              "name": "variableSet",
+              "data": {
+                "key": "incomingMessage"
+              },
+              "class": "variableSet",
+              "html": "variableSet",
+              "typenode": "vue",
+              "inputs": {
+                "input_1": {
+                  "connections": []
+                }
+              },
+              "outputs": {
+                "output_1": {
+                  "connections": []
+                }
+              },
+              "pos_x": -1981.216064453125,
+              "pos_y": 1064.9720764160156,
+              "key": "incomingMessage"
+            },
+            "class": "variableSet",
+            "html": "variableSet",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "23",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "35",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": -2169,
+            "pos_y": 827
+          },
+          "class": "variableSet",
+          "html": "variableSet",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "23",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "35",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -2169,
+          "pos_y": 827
+        },
+        "42": {
+          "id": 42,
+          "name": "switch",
+          "data": {},
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "35",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "43",
+                  "output": "input_1"
+                },
+                {
+                  "node": "44",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -1331,
+          "pos_y": 848
+        },
+        "43": {
+          "id": 43,
+          "name": "switchCase",
+          "data": {
+            "id": 43,
+            "name": "switchCase",
+            "data": {
+              "input": "Test"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "42",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "45",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": -837,
+            "pos_y": 652.5
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "42",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "45",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -837,
+          "pos_y": 652.5
+        },
+        "44": {
+          "id": 44,
+          "name": "switchCase",
+          "data": {
+            "id": 44,
+            "name": "switchCase",
+            "data": {
+              "input": "Test1"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "42",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": -832,
+            "pos_y": 999
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "42",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": -832,
+          "pos_y": 999
+        },
+        "45": {
+          "id": 45,
+          "name": "llmGenerate",
+          "data": {
+            "id": 45,
+            "name": "llmGenerate",
+            "data": {
+              "systemPrompt": "Testing",
+              "userPrompt": "Testing"
+            },
+            "class": "llmGenerate",
+            "html": "llmGenerate",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "43",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "46",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": -356,
+            "pos_y": 626
+          },
+          "class": "llmGenerate",
+          "html": "llmGenerate",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "43",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "46",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -356,
+          "pos_y": 626
+        },
+        "46": {
+          "id": 46,
+          "name": "extractOutput",
+          "data": {},
+          "class": "extractOutput",
+          "html": "extractOutput",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "45",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "47",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 100,
+          "pos_y": 672
+        },
+        "47": {
+          "id": 47,
+          "name": "switch",
+          "data": {},
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "46",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "48",
+                  "output": "input_1"
+                },
+                {
+                  "node": "49",
+                  "output": "input_1"
+                },
+                {
+                  "node": "50",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 531.8888888888889,
+          "pos_y": 674
+        },
+        "48": {
+          "id": 48,
+          "name": "switchCase",
+          "data": {
+            "id": 48,
+            "name": "switchCase",
+            "data": {
+              "input": "text"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "47",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 927.0909090909091,
+            "pos_y": 489
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "47",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "51",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 927.0909090909091,
+          "pos_y": 489
+        },
+        "49": {
+          "id": 49,
+          "name": "switchCase",
+          "data": {
+            "id": 49,
+            "name": "switchCase",
+            "data": {
+              "input": "handle_assistant"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "47",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 932.9090909090909,
+            "pos_y": 655
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "47",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 932.9090909090909,
+          "pos_y": 655
+        },
+        "50": {
+          "id": 50,
+          "name": "switchCase",
+          "data": {
+            "id": 50,
+            "name": "switchCase",
+            "data": {
+              "input": "change_topic"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "47",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 930,
+            "pos_y": 853
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "47",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 930,
+          "pos_y": 853
+        },
+        "51": {
+          "id": 51,
+          "name": "llmGenerate",
+          "data": {
+            "id": 51,
+            "name": "llmGenerate",
+            "data": {
+              "systemPrompt": "Test",
+              "userPrompt": "IsWhat"
+            },
+            "class": "llmGenerate",
+            "html": "llmGenerate",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "48",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 1391,
+            "pos_y": 463
+          },
+          "class": "llmGenerate",
+          "html": "llmGenerate",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "48",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 1391,
+          "pos_y": 463
+        }
+      }
+    }
+  }
+})
+      
+      })
 
   return {
     exportEditor, listNodes, drag, drop, allowDrop, dialogVisible, dialogData
