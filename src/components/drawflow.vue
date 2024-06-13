@@ -275,23 +275,79 @@ export default {
        editor.value.registerNode('variableSet', VariableSet, {}, {})
        editor.value.registerNode('handleAssistant', HandleAssistant, {}, {})
        editor.value.registerNode('changeTopic', ChangeTopic, {}, {})
-
        editor.value.import({
   "drawflow": {
     "Home": {
       "data": {
-        "15": {
-          "id": 15,
+        "67": {
+          "id": 67,
+          "name": "llmGenerate",
+          "data": {
+            "id": 67,
+            "name": "llmGenerate",
+            "data": {
+              "systemPrompt": "Test",
+              "userPrompt": "123123"
+            },
+            "class": "llmGenerate",
+            "html": "llmGenerate",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "66",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": -956,
+            "pos_y": 685.25
+          },
+          "class": "llmGenerate",
+          "html": "llmGenerate",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "78",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "69",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -1270,
+          "pos_y": 683
+        },
+        "68": {
+          "id": 68,
           "name": "globalVariable",
           "data": {
-            "id": 15,
+            "id": 68,
             "name": "globalVariable",
             "data": {
-              "id": 15,
+              "id": 68,
               "name": "globalVariable",
               "data": {
-                "key": "systemPrompt",
-                "valueHolder": "This is system prompt",
+                "key": "321",
+                "valueHolder": "312312",
                 "method": "string"
               },
               "class": "globalVariable",
@@ -299,32 +355,205 @@ export default {
               "typenode": "vue",
               "inputs": {},
               "outputs": {},
-              "pos_x": 699,
-              "pos_y": 168,
-              "key": "systemPrompt",
-              "valueholder": "This is system prompt",
-              "valueHolder": "THIS IS SYSTEMPROMPT",
-              "method": "string"
+              "pos_x": -1594.625091552734,
+              "pos_y": 491.8749999999998,
+              "key": "321",
+              "valueholder": "312312",
+              "valueHolder": "312312"
             },
             "class": "globalVariable",
             "html": "globalVariable",
             "typenode": "vue",
             "inputs": {},
             "outputs": {},
-            "pos_x": -2303.4285714285716,
-            "pos_y": 94,
-            "valueholder": "THIS IS SYSTEMPROMPT"
+            "pos_x": -1576,
+            "pos_y": 437.75
           },
           "class": "globalVariable",
           "html": "globalVariable",
           "typenode": "vue",
           "inputs": {},
           "outputs": {},
-          "pos_x": -2303,
-          "pos_y": 94
+          "pos_x": -1374,
+          "pos_y": 358
         },
-        "23": {
-          "id": 23,
+        "69": {
+          "id": 69,
+          "name": "switch",
+          "data": {
+            "id": 69,
+            "name": "switch",
+            "data": {
+              "input": "type"
+            },
+            "class": "switch",
+            "html": "switch",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "67",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "70",
+                    "output": "input_1"
+                  },
+                  {
+                    "node": "71",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": -746,
+            "pos_y": 708
+          },
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "67",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "70",
+                  "output": "input_1"
+                },
+                {
+                  "node": "71",
+                  "output": "input_1"
+                },
+                {
+                  "node": "81",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": -762,
+          "pos_y": 706
+        },
+        "70": {
+          "id": 70,
+          "name": "switchCase",
+          "data": {
+            "id": 70,
+            "name": "switchCase",
+            "data": {
+              "input": "text"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "69",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": -294,
+            "pos_y": 532
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "69",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": -304.25,
+          "pos_y": 535
+        },
+        "71": {
+          "id": 71,
+          "name": "switchCase",
+          "data": {
+            "id": 71,
+            "name": "switchCase",
+            "data": {
+              "input": "change_topic"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "69",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": -294,
+            "pos_y": 854
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "69",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": -303,
+          "pos_y": 704.75
+        },
+        "76": {
+          "id": 76,
           "name": "fbWebhook",
           "data": {},
           "class": "fbWebhook",
@@ -339,82 +568,32 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "37",
+                  "node": "80",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": -2522,
-          "pos_y": 849
+          "pos_x": -2988,
+          "pos_y": 902
         },
-        "35": {
-          "id": 35,
-          "name": "extractOutput",
-          "data": {},
-          "class": "extractOutput",
-          "html": "extractOutput",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "37",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "42",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -1803,
-          "pos_y": 848
-        },
-        "37": {
-          "id": 37,
-          "name": "variableSet",
+        "77": {
+          "id": 77,
+          "name": "switch",
           "data": {
-            "id": 37,
-            "name": "variableSet",
+            "id": 77,
+            "name": "switch",
             "data": {
-              "id": 37,
-              "name": "variableSet",
-              "data": {
-                "key": "incomingMessage"
-              },
-              "class": "variableSet",
-              "html": "variableSet",
-              "typenode": "vue",
-              "inputs": {
-                "input_1": {
-                  "connections": []
-                }
-              },
-              "outputs": {
-                "output_1": {
-                  "connections": []
-                }
-              },
-              "pos_x": -1981.216064453125,
-              "pos_y": 1064.9720764160156,
-              "key": "incomingMessage"
+              "input": "type"
             },
-            "class": "variableSet",
-            "html": "variableSet",
+            "class": "switch",
+            "html": "switch",
             "typenode": "vue",
             "inputs": {
               "input_1": {
                 "connections": [
                   {
-                    "node": "23",
+                    "node": "76",
                     "input": "output_1"
                   }
                 ]
@@ -424,45 +603,19 @@ export default {
               "output_1": {
                 "connections": [
                   {
-                    "node": "35",
+                    "node": "78",
+                    "output": "input_1"
+                  },
+                  {
+                    "node": "79",
                     "output": "input_1"
                   }
                 ]
               }
             },
-            "pos_x": -2169,
-            "pos_y": 827
+            "pos_x": -2196,
+            "pos_y": 880
           },
-          "class": "variableSet",
-          "html": "variableSet",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "23",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "35",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -2169,
-          "pos_y": 827
-        },
-        "42": {
-          "id": 42,
-          "name": "switch",
-          "data": {},
           "class": "switch",
           "html": "switch",
           "typenode": "vue",
@@ -470,7 +623,7 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "35",
+                  "node": "80",
                   "input": "output_1"
                 }
               ]
@@ -480,27 +633,27 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "43",
+                  "node": "78",
                   "output": "input_1"
                 },
                 {
-                  "node": "44",
+                  "node": "79",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": -1331,
-          "pos_y": 848
+          "pos_x": -2196,
+          "pos_y": 880
         },
-        "43": {
-          "id": 43,
+        "78": {
+          "id": 78,
           "name": "switchCase",
           "data": {
-            "id": 43,
+            "id": 78,
             "name": "switchCase",
             "data": {
-              "input": "Test"
+              "input": "TEXT"
             },
             "class": "switchCase",
             "html": "switchCase",
@@ -509,7 +662,7 @@ export default {
               "input_1": {
                 "connections": [
                   {
-                    "node": "42",
+                    "node": "77",
                     "input": "output_1"
                   }
                 ]
@@ -519,14 +672,14 @@ export default {
               "output_1": {
                 "connections": [
                   {
-                    "node": "45",
+                    "node": "66",
                     "output": "input_1"
                   }
                 ]
               }
             },
-            "pos_x": -837,
-            "pos_y": 652.5
+            "pos_x": -1770,
+            "pos_y": 706
           },
           "class": "switchCase",
           "html": "switchCase",
@@ -535,7 +688,7 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "42",
+                  "node": "77",
                   "input": "output_1"
                 }
               ]
@@ -545,23 +698,23 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "45",
+                  "node": "67",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": -837,
-          "pos_y": 652.5
+          "pos_x": -1770,
+          "pos_y": 706
         },
-        "44": {
-          "id": 44,
+        "79": {
+          "id": 79,
           "name": "switchCase",
           "data": {
-            "id": 44,
+            "id": 79,
             "name": "switchCase",
             "data": {
-              "input": "Test1"
+              "input": "POSTBACK"
             },
             "class": "switchCase",
             "html": "switchCase",
@@ -570,7 +723,7 @@ export default {
               "input_1": {
                 "connections": [
                   {
-                    "node": "42",
+                    "node": "77",
                     "input": "output_1"
                   }
                 ]
@@ -581,8 +734,8 @@ export default {
                 "connections": []
               }
             },
-            "pos_x": -832,
-            "pos_y": 999
+            "pos_x": -1778,
+            "pos_y": 1072
           },
           "class": "switchCase",
           "html": "switchCase",
@@ -591,7 +744,7 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "42",
+                  "node": "77",
                   "input": "output_1"
                 }
               ]
@@ -602,159 +755,24 @@ export default {
               "connections": []
             }
           },
-          "pos_x": -832,
-          "pos_y": 999
+          "pos_x": -1778,
+          "pos_y": 1072
         },
-        "45": {
-          "id": 45,
-          "name": "llmGenerate",
+        "80": {
+          "id": 80,
+          "name": "variableSet",
           "data": {
-            "id": 45,
-            "name": "llmGenerate",
+            "id": 80,
+            "name": "variableSet",
             "data": {
-              "systemPrompt": "Testing",
-              "userPrompt": "Testing"
+              "key": "incomingMessage"
             },
-            "class": "llmGenerate",
-            "html": "llmGenerate",
+            "class": "variableSet",
+            "html": "variableSet",
             "typenode": "vue",
             "inputs": {
               "input_1": {
-                "connections": [
-                  {
-                    "node": "43",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": [
-                  {
-                    "node": "46",
-                    "output": "input_1"
-                  }
-                ]
-              }
-            },
-            "pos_x": -356,
-            "pos_y": 626
-          },
-          "class": "llmGenerate",
-          "html": "llmGenerate",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "43",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "46",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -356,
-          "pos_y": 626
-        },
-        "46": {
-          "id": 46,
-          "name": "extractOutput",
-          "data": {},
-          "class": "extractOutput",
-          "html": "extractOutput",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "45",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "47",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": 100,
-          "pos_y": 672
-        },
-        "47": {
-          "id": 47,
-          "name": "switch",
-          "data": {},
-          "class": "switch",
-          "html": "switch",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "46",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "48",
-                  "output": "input_1"
-                },
-                {
-                  "node": "49",
-                  "output": "input_1"
-                },
-                {
-                  "node": "50",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": 531.8888888888889,
-          "pos_y": 674
-        },
-        "48": {
-          "id": 48,
-          "name": "switchCase",
-          "data": {
-            "id": 48,
-            "name": "switchCase",
-            "data": {
-              "input": "text"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "47",
-                    "input": "output_1"
-                  }
-                ]
+                "connections": []
               }
             },
             "outputs": {
@@ -762,17 +780,18 @@ export default {
                 "connections": []
               }
             },
-            "pos_x": 927.0909090909091,
-            "pos_y": 489
+            "pos_x": -2584,
+            "pos_y": 908,
+            "key": "incomingMessage"
           },
-          "class": "switchCase",
-          "html": "switchCase",
+          "class": "variableSet",
+          "html": "variableSet",
           "typenode": "vue",
           "inputs": {
             "input_1": {
               "connections": [
                 {
-                  "node": "47",
+                  "node": "76",
                   "input": "output_1"
                 }
               ]
@@ -782,20 +801,20 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "51",
+                  "node": "77",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": 927.0909090909091,
-          "pos_y": 489
+          "pos_x": -2584,
+          "pos_y": 882
         },
-        "49": {
-          "id": 49,
+        "81": {
+          "id": 81,
           "name": "switchCase",
           "data": {
-            "id": 49,
+            "id": 81,
             "name": "switchCase",
             "data": {
               "input": "handle_assistant"
@@ -807,7 +826,7 @@ export default {
               "input_1": {
                 "connections": [
                   {
-                    "node": "47",
+                    "node": "69",
                     "input": "output_1"
                   }
                 ]
@@ -818,8 +837,8 @@ export default {
                 "connections": []
               }
             },
-            "pos_x": 932.9090909090909,
-            "pos_y": 655
+            "pos_x": -300.75,
+            "pos_y": 877
           },
           "class": "switchCase",
           "html": "switchCase",
@@ -828,7 +847,7 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "47",
+                  "node": "69",
                   "input": "output_1"
                 }
               ]
@@ -839,111 +858,8 @@ export default {
               "connections": []
             }
           },
-          "pos_x": 932.9090909090909,
-          "pos_y": 655
-        },
-        "50": {
-          "id": 50,
-          "name": "switchCase",
-          "data": {
-            "id": 50,
-            "name": "switchCase",
-            "data": {
-              "input": "change_topic"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "47",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": 930,
-            "pos_y": 853
-          },
-          "class": "switchCase",
-          "html": "switchCase",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "47",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": []
-            }
-          },
-          "pos_x": 930,
-          "pos_y": 853
-        },
-        "51": {
-          "id": 51,
-          "name": "llmGenerate",
-          "data": {
-            "id": 51,
-            "name": "llmGenerate",
-            "data": {
-              "systemPrompt": "Test",
-              "userPrompt": "IsWhat"
-            },
-            "class": "llmGenerate",
-            "html": "llmGenerate",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "48",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": 1391,
-            "pos_y": 463
-          },
-          "class": "llmGenerate",
-          "html": "llmGenerate",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "48",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": []
-            }
-          },
-          "pos_x": 1391,
-          "pos_y": 463
+          "pos_x": -300.75,
+          "pos_y": 877
         }
       }
     }

@@ -11,6 +11,7 @@
   <script>
   import { defineComponent, onMounted, getCurrentInstance, ref, nextTick, watch } from 'vue'
   import nodeHeader from './nodeHeader.vue'
+  import { findDeepestData } from '../../utils'
   
   export default defineComponent({
       components: {
@@ -38,9 +39,10 @@
               await nextTick();
               nodeId.value = el.value.parentElement.parentElement.id.slice(5);
               const nodeData = df.getNodeFromId(nodeId.value);
-              if (nodeData && nodeData.data) {
-                  systemPrompt.value = nodeData.data.systemPrompt || '';
-                  userPrompt.value = nodeData.data.userPrompt || '';
+              const data = findDeepestData(nodeData)
+              if (data) {
+                  systemPrompt.value = data.systemPrompt || '';
+                  userPrompt.value = data.userPrompt || '';
               }
           });
           

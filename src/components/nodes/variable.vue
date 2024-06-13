@@ -22,6 +22,7 @@
 <script>
 import { defineComponent, onMounted, getCurrentInstance, readonly, ref, nextTick, watch } from 'vue'
 import nodeHeader from './nodeHeader.vue'
+import { findDeepestData } from '../../utils'
 
 export default defineComponent({
     components: {
@@ -67,10 +68,12 @@ export default defineComponent({
             await nextTick()
             nodeId.value = el.value.parentElement.parentElement.id.slice(5)
             dataNode.value = df.getNodeFromId(nodeId.value)
-            
-            key.value = dataNode.value.data.key;
-            valueHolder.value = dataNode.value.data.valueHolder;
-            method.value = dataNode.value.data.method;
+            let data = findDeepestData(dataNode.value);
+            if(data){
+                key.value = data.key;
+                valueHolder.value = data.valueHolder;
+                method.value = data.method;
+            }
         });
         
         return {

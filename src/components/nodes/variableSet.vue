@@ -9,6 +9,7 @@
 <script>
 import { defineComponent, onMounted, getCurrentInstance, ref, nextTick, watch } from 'vue'
 import nodeHeader from './nodeHeader.vue'
+import { findDeepestData } from '../../utils'
 
 export default defineComponent({
     components: {
@@ -32,8 +33,10 @@ export default defineComponent({
             await nextTick();
             nodeId.value = el.value.parentElement.parentElement.id.slice(5);
             dataNode.value = df.getNodeFromId(nodeId.value);
-
-            key.value = dataNode.value.data.key;
+            let data = findDeepestData(dataNode.value);
+            console.log("dataNode.value",dataNode.value)
+            console.log("data",data)
+            key.value = data.key;
         });
 
         return {
