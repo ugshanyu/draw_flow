@@ -1,6 +1,6 @@
 <template>
     <div ref="el">
-        <nodeHeader title="VariableSet"/>
+        <nodeHeader title="HandleAssistant"/>
         <p>Key</p>
         <el-input v-model="key" df-key placeholder="Key" size="small"></el-input>
     </div>
@@ -9,6 +9,7 @@
 <script>
 import { defineComponent, onMounted, getCurrentInstance, ref, nextTick, watch } from 'vue'
 import nodeHeader from './nodeHeader.vue'
+import { findDeepestData } from '../../utils'
 
 export default defineComponent({
     components: {
@@ -32,8 +33,8 @@ export default defineComponent({
             await nextTick();
             nodeId.value = el.value.parentElement.parentElement.id.slice(5);
             dataNode.value = df.getNodeFromId(nodeId.value);
-
-            key.value = dataNode.value.data.key;
+            const data = findDeepestData(nodeData)
+            key.value = data.key;
         });
 
         return {
