@@ -24,13 +24,13 @@ export default defineComponent({
         const direction = ref('rtl');
 
         // Debugging changes in inputs
-        watch(keyText, (newVal, oldVal) => {
-          console.log(`KeyText changed from ${oldVal} to ${newVal}`);
-        });
+        // watch(keyText, (newVal, oldVal) => {
+        // //   console.log(`KeyText changed from ${oldVal} to ${newVal}`);
+        // });
 
-        watch(valueText, (newVal, oldVal) => {
-          console.log(`ValueText changed from ${oldVal} to ${newVal}`);
-        });
+        // watch(valueText, (newVal, oldVal) => {
+        // //   console.log(`ValueText changed from ${oldVal} to ${newVal}`);
+        // });
 
         const handleClose = (done) => {
             ElMessageBox.confirm('Are you sure you want to close this?')

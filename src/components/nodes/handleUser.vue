@@ -1,8 +1,8 @@
 <template>
     <div ref="el">
-        <nodeHeader title="HandleAssistant"/>
-        <p>Key</p>
-        <el-input v-model="key" placeholder="Key" size="small"></el-input>
+        <nodeHeader title="HandleUser"/>
+        <p>User Info Variable</p>
+        <el-input v-model="key" placeholder="UserInfoVariable" size="small"></el-input>
     </div>
 </template>
 

@@ -35,7 +35,7 @@
             nodeId.value = el.value.parentElement.parentElement.id.slice(5);
             const nodeData = df.getNodeFromId(nodeId.value);
             let data = findDeepestData(nodeData);
-            console.log("datadatadata", data)
+            // console.log("datadatadata", data)
             if (data) {
                 input.value = data.input || '';
             }

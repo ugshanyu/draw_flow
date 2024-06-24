@@ -58,6 +58,8 @@ import FunctionWrapper from './nodes/functionWrapper.vue'
 import VariableSet from './nodes/variableSet.vue'
 import ChangeTopic from './nodes/changeTopic.vue'
 import HandleAssistant from './nodes/handleAssistant.vue'
+import SendMessage from './nodes/sendMessage.vue'
+import HandleUser from './nodes/handleUser.vue'
 
 export default {
   name: 'drawflow',
@@ -162,9 +164,9 @@ export default {
           output:1
         },
         {
-          name: 'Function Wrapper',
+          name: 'Send Message',
           color: 'darkblue',
-          item: 'functionWrapper',
+          item: 'sendMessage',
           input:1,
           output:1
         },
@@ -179,6 +181,13 @@ export default {
           name: 'Handle Assistant',
           color: 'darkblue',
           item: 'handleAssistant',
+          input:1,
+          output:1
+        },
+        {
+          name: 'Handle User',
+          color: 'darkblue',
+          item: 'handleUser',
           input:1,
           output:1
         },
@@ -275,79 +284,24 @@ export default {
        editor.value.registerNode('variableSet', VariableSet, {}, {})
        editor.value.registerNode('handleAssistant', HandleAssistant, {}, {})
        editor.value.registerNode('changeTopic', ChangeTopic, {}, {})
+       editor.value.registerNode('sendMessage', SendMessage, {}, {})
+       editor.value.registerNode('handleUser', HandleUser, {}, {})
        editor.value.import({
   "drawflow": {
     "Home": {
       "data": {
-        "67": {
-          "id": 67,
-          "name": "llmGenerate",
-          "data": {
-            "id": 67,
-            "name": "llmGenerate",
-            "data": {
-              "systemPrompt": "Test",
-              "userPrompt": "123123"
-            },
-            "class": "llmGenerate",
-            "html": "llmGenerate",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "66",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": -956,
-            "pos_y": 685.25
-          },
-          "class": "llmGenerate",
-          "html": "llmGenerate",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "78",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "69",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -1270,
-          "pos_y": 683
-        },
-        "68": {
-          "id": 68,
+        "29": {
+          "id": 29,
           "name": "globalVariable",
           "data": {
-            "id": 68,
+            "id": 29,
             "name": "globalVariable",
             "data": {
-              "id": 68,
+              "id": 29,
               "name": "globalVariable",
               "data": {
-                "key": "321",
-                "valueHolder": "312312",
+                "key": "prompt_2",
+                "valueHolder": "Testing we are testing",
                 "method": "string"
               },
               "class": "globalVariable",
@@ -355,205 +309,72 @@ export default {
               "typenode": "vue",
               "inputs": {},
               "outputs": {},
-              "pos_x": -1594.625091552734,
-              "pos_y": 491.8749999999998,
-              "key": "321",
-              "valueholder": "312312",
-              "valueHolder": "312312"
+              "pos_x": 1872.5161743164053,
+              "pos_y": -224.87152099609366,
+              "key": "system_prompt",
+              "valueholder": "Testing we are testing",
+              "valueHolder": "Testing we are testing"
             },
             "class": "globalVariable",
             "html": "globalVariable",
             "typenode": "vue",
             "inputs": {},
             "outputs": {},
-            "pos_x": -1576,
-            "pos_y": 437.75
+            "pos_x": 1391,
+            "pos_y": -629,
+            "key": "system_prompt"
           },
           "class": "globalVariable",
           "html": "globalVariable",
           "typenode": "vue",
           "inputs": {},
           "outputs": {},
-          "pos_x": -1374,
-          "pos_y": 358
+          "pos_x": 1259,
+          "pos_y": 720
         },
-        "69": {
-          "id": 69,
-          "name": "switch",
+        "30": {
+          "id": 30,
+          "name": "globalVariable",
           "data": {
-            "id": 69,
-            "name": "switch",
+            "id": 30,
+            "name": "globalVariable",
             "data": {
-              "input": "type"
+              "id": 30,
+              "name": "globalVariable",
+              "data": {
+                "key": "prompt_3",
+                "valueHolder": "We are testing",
+                "method": "string"
+              },
+              "class": "globalVariable",
+              "html": "globalVariable",
+              "typenode": "vue",
+              "inputs": {},
+              "outputs": {},
+              "pos_x": 1863.76609802246,
+              "pos_y": -520.4966735839843,
+              "key": "prompt_3",
+              "valueholder": "We are testing",
+              "valueHolder": "We are testing"
             },
-            "class": "switch",
-            "html": "switch",
+            "class": "globalVariable",
+            "html": "globalVariable",
             "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "67",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": [
-                  {
-                    "node": "70",
-                    "output": "input_1"
-                  },
-                  {
-                    "node": "71",
-                    "output": "input_1"
-                  }
-                ]
-              }
-            },
-            "pos_x": -746,
-            "pos_y": 708
+            "inputs": {},
+            "outputs": {},
+            "pos_x": 1723,
+            "pos_y": -628
           },
-          "class": "switch",
-          "html": "switch",
+          "class": "globalVariable",
+          "html": "globalVariable",
           "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "67",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "70",
-                  "output": "input_1"
-                },
-                {
-                  "node": "71",
-                  "output": "input_1"
-                },
-                {
-                  "node": "81",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -762,
-          "pos_y": 706
+          "inputs": {},
+          "outputs": {},
+          "pos_x": 1661,
+          "pos_y": 719.5
         },
-        "70": {
-          "id": 70,
-          "name": "switchCase",
-          "data": {
-            "id": 70,
-            "name": "switchCase",
-            "data": {
-              "input": "text"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "69",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": -294,
-            "pos_y": 532
-          },
-          "class": "switchCase",
-          "html": "switchCase",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "69",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": []
-            }
-          },
-          "pos_x": -304.25,
-          "pos_y": 535
-        },
-        "71": {
-          "id": 71,
-          "name": "switchCase",
-          "data": {
-            "id": 71,
-            "name": "switchCase",
-            "data": {
-              "input": "change_topic"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "69",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": -294,
-            "pos_y": 854
-          },
-          "class": "switchCase",
-          "html": "switchCase",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "69",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": []
-            }
-          },
-          "pos_x": -303,
-          "pos_y": 704.75
-        },
-        "76": {
-          "id": 76,
+        "49": {
+          "id": 49,
           "name": "fbWebhook",
           "data": {},
           "class": "fbWebhook",
@@ -568,204 +389,23 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "80",
+                  "node": "50",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": -2988,
-          "pos_y": 902
+          "pos_x": -166,
+          "pos_y": 1549
         },
-        "77": {
-          "id": 77,
-          "name": "switch",
-          "data": {
-            "id": 77,
-            "name": "switch",
-            "data": {
-              "input": "type"
-            },
-            "class": "switch",
-            "html": "switch",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "76",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": [
-                  {
-                    "node": "78",
-                    "output": "input_1"
-                  },
-                  {
-                    "node": "79",
-                    "output": "input_1"
-                  }
-                ]
-              }
-            },
-            "pos_x": -2196,
-            "pos_y": 880
-          },
-          "class": "switch",
-          "html": "switch",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "80",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "78",
-                  "output": "input_1"
-                },
-                {
-                  "node": "79",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -2196,
-          "pos_y": 880
-        },
-        "78": {
-          "id": 78,
-          "name": "switchCase",
-          "data": {
-            "id": 78,
-            "name": "switchCase",
-            "data": {
-              "input": "TEXT"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "77",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": [
-                  {
-                    "node": "66",
-                    "output": "input_1"
-                  }
-                ]
-              }
-            },
-            "pos_x": -1770,
-            "pos_y": 706
-          },
-          "class": "switchCase",
-          "html": "switchCase",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "77",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": [
-                {
-                  "node": "67",
-                  "output": "input_1"
-                }
-              ]
-            }
-          },
-          "pos_x": -1770,
-          "pos_y": 706
-        },
-        "79": {
-          "id": 79,
-          "name": "switchCase",
-          "data": {
-            "id": 79,
-            "name": "switchCase",
-            "data": {
-              "input": "POSTBACK"
-            },
-            "class": "switchCase",
-            "html": "switchCase",
-            "typenode": "vue",
-            "inputs": {
-              "input_1": {
-                "connections": [
-                  {
-                    "node": "77",
-                    "input": "output_1"
-                  }
-                ]
-              }
-            },
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": -1778,
-            "pos_y": 1072
-          },
-          "class": "switchCase",
-          "html": "switchCase",
-          "typenode": "vue",
-          "inputs": {
-            "input_1": {
-              "connections": [
-                {
-                  "node": "77",
-                  "input": "output_1"
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "output_1": {
-              "connections": []
-            }
-          },
-          "pos_x": -1778,
-          "pos_y": 1072
-        },
-        "80": {
-          "id": 80,
+        "50": {
+          "id": 50,
           "name": "variableSet",
           "data": {
-            "id": 80,
+            "id": 50,
             "name": "variableSet",
             "data": {
-              "key": "incomingMessage"
+              "key": "incoming_message"
             },
             "class": "variableSet",
             "html": "variableSet",
@@ -780,9 +420,9 @@ export default {
                 "connections": []
               }
             },
-            "pos_x": -2584,
-            "pos_y": 908,
-            "key": "incomingMessage"
+            "pos_x": 455.5216841264205,
+            "pos_y": 1511.3249622691758,
+            "key": "incoming_message"
           },
           "class": "variableSet",
           "html": "variableSet",
@@ -791,7 +431,7 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "76",
+                  "node": "49",
                   "input": "output_1"
                 }
               ]
@@ -801,20 +441,531 @@ export default {
             "output_1": {
               "connections": [
                 {
-                  "node": "77",
+                  "node": "51",
                   "output": "input_1"
                 }
               ]
             }
           },
-          "pos_x": -2584,
-          "pos_y": 882
+          "pos_x": 229,
+          "pos_y": 1528.090909090909
         },
-        "81": {
-          "id": 81,
+        "51": {
+          "id": 51,
+          "name": "handleUser",
+          "data": {
+            "id": 51,
+            "name": "handleUser",
+            "data": {
+              "key": "users_info"
+            },
+            "class": "handleUser",
+            "html": "handleUser",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "50",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "53",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": 569,
+            "pos_y": 1527.090909090909
+          },
+          "class": "handleUser",
+          "html": "handleUser",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "50",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "53",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 569,
+          "pos_y": 1527.090909090909
+        },
+        "53": {
+          "id": 53,
+          "name": "switch",
+          "data": {
+            "id": 53,
+            "name": "switch",
+            "data": {
+              "input": "send_message"
+            },
+            "class": "switch",
+            "html": "switch",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "51",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "54",
+                    "output": "input_1"
+                  },
+                  {
+                    "node": "55",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": 892,
+            "pos_y": 1527
+          },
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "51",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "54",
+                  "output": "input_1"
+                },
+                {
+                  "node": "55",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 892,
+          "pos_y": 1527
+        },
+        "54": {
+          "id": 54,
           "name": "switchCase",
           "data": {
-            "id": 81,
+            "id": 54,
+            "name": "switchCase",
+            "data": {
+              "input": "True"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "53",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "56",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": 1182,
+            "pos_y": 1379
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "53",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "56",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 1182,
+          "pos_y": 1379
+        },
+        "55": {
+          "id": 55,
+          "name": "switchCase",
+          "data": {
+            "id": 55,
+            "name": "switchCase",
+            "data": {
+              "input": "False"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "53",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 1178,
+            "pos_y": 1681.090909090909
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "53",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 1178,
+          "pos_y": 1681.090909090909
+        },
+        "56": {
+          "id": 56,
+          "name": "llmGenerate",
+          "data": {
+            "id": 56,
+            "name": "llmGenerate",
+            "data": {
+              "systemPrompt": "system_prompt",
+              "userPrompt": "incoming_message"
+            },
+            "class": "llmGenerate",
+            "html": "llmGenerate",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "54",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "58",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": 1546,
+            "pos_y": 1355
+          },
+          "class": "llmGenerate",
+          "html": "llmGenerate",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "54",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "58",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 1546,
+          "pos_y": 1355
+        },
+        "58": {
+          "id": 58,
+          "name": "extractOutput",
+          "data": {},
+          "class": "extractOutput",
+          "html": "extractOutput",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "56",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "59",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 1953.909090909091,
+          "pos_y": 1403
+        },
+        "59": {
+          "id": 59,
+          "name": "variableSet",
+          "data": {
+            "id": 59,
+            "name": "variableSet",
+            "data": {
+              "key": "llm_generated"
+            },
+            "class": "variableSet",
+            "html": "variableSet",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": []
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 2673.7035577947445,
+            "pos_y": 1458.5976617986503,
+            "key": "llm_generated"
+          },
+          "class": "variableSet",
+          "html": "variableSet",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "58",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "60",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 2367,
+          "pos_y": 1379
+        },
+        "60": {
+          "id": 60,
+          "name": "switch",
+          "data": {
+            "id": 60,
+            "name": "switch",
+            "data": {
+              "input": "type"
+            },
+            "class": "switch",
+            "html": "switch",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "59",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": [
+                  {
+                    "node": "61",
+                    "output": "input_1"
+                  },
+                  {
+                    "node": "62",
+                    "output": "input_1"
+                  }
+                ]
+              }
+            },
+            "pos_x": 2792,
+            "pos_y": 1379
+          },
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "59",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "61",
+                  "output": "input_1"
+                },
+                {
+                  "node": "62",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 2792,
+          "pos_y": 1379
+        },
+        "61": {
+          "id": 61,
+          "name": "switchCase",
+          "data": {
+            "id": 61,
+            "name": "switchCase",
+            "data": {
+              "input": "text"
+            },
+            "class": "switchCase",
+            "html": "switchCase",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "60",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 3086,
+            "pos_y": 1208
+          },
+          "class": "switchCase",
+          "html": "switchCase",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "60",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "63",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 3086,
+          "pos_y": 1208
+        },
+        "62": {
+          "id": 62,
+          "name": "switchCase",
+          "data": {
+            "id": 62,
             "name": "switchCase",
             "data": {
               "input": "handle_assistant"
@@ -826,7 +977,7 @@ export default {
               "input_1": {
                 "connections": [
                   {
-                    "node": "69",
+                    "node": "60",
                     "input": "output_1"
                   }
                 ]
@@ -837,8 +988,8 @@ export default {
                 "connections": []
               }
             },
-            "pos_x": -300.75,
-            "pos_y": 877
+            "pos_x": 3090,
+            "pos_y": 1616.090909090909
           },
           "class": "switchCase",
           "html": "switchCase",
@@ -847,7 +998,64 @@ export default {
             "input_1": {
               "connections": [
                 {
-                  "node": "69",
+                  "node": "60",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": [
+                {
+                  "node": "64",
+                  "output": "input_1"
+                }
+              ]
+            }
+          },
+          "pos_x": 3088.1666666666665,
+          "pos_y": 1617
+        },
+        "63": {
+          "id": 63,
+          "name": "sendMessage",
+          "data": {
+            "id": 63,
+            "name": "sendMessage",
+            "data": {
+              "userId": "incoming_message",
+              "text": "llm_generated[\"text\"]"
+            },
+            "class": "sendMessage",
+            "html": "sendMessage",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "61",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 3499,
+            "pos_y": 1181.1666666666667
+          },
+          "class": "sendMessage",
+          "html": "sendMessage",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "61",
                   "input": "output_1"
                 }
               ]
@@ -858,13 +1066,2130 @@ export default {
               "connections": []
             }
           },
-          "pos_x": -300.75,
-          "pos_y": 877
+          "pos_x": 3499,
+          "pos_y": 1181.1666666666667
+        },
+        "64": {
+          "id": 64,
+          "name": "handleAssistant",
+          "data": {
+            "id": 64,
+            "name": "handleAssistant",
+            "data": {
+              "key": "users_info"
+            },
+            "class": "handleAssistant",
+            "html": "handleAssistant",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": [
+                  {
+                    "node": "62",
+                    "input": "output_1"
+                  }
+                ]
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 3511,
+            "pos_y": 1610.2727272727273
+          },
+          "class": "handleAssistant",
+          "html": "handleAssistant",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": [
+                {
+                  "node": "62",
+                  "input": "output_1"
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 3511,
+          "pos_y": 1610.2727272727273
         }
       }
     }
   }
 })
+//        editor.value.import({
+//   "drawflow": {
+//     "Home": {
+//       "data": {
+//         "5": {
+//           "id": 5,
+//           "name": "handleUser",
+//           "data": {
+//             "id": 5,
+//             "name": "handleUser",
+//             "data": {
+//               "key": "userInfoVariable "
+//             },
+//             "class": "handleUser",
+//             "html": "handleUser",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "8",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "7",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 612,
+//             "pos_y": 800.8333333333334
+//           },
+//           "class": "handleUser",
+//           "html": "handleUser",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "8",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "7",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 612,
+//           "pos_y": 800.8333333333334
+//         },
+//         "6": {
+//           "id": 6,
+//           "name": "fbWebhook",
+//           "data": {},
+//           "class": "fbWebhook",
+//           "html": "fbWebhook",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": []
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "8",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": -169,
+//           "pos_y": 826.5
+//         },
+//         "7": {
+//           "id": 7,
+//           "name": "switch",
+//           "data": {
+//             "id": 7,
+//             "name": "switch",
+//             "data": {
+//               "input": "sendMessage"
+//             },
+//             "class": "switch",
+//             "html": "switch",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "5",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "9",
+//                     "output": "input_1"
+//                   },
+//                   {
+//                     "node": "10",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 986.8333333333334,
+//             "pos_y": 798
+//           },
+//           "class": "switch",
+//           "html": "switch",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "5",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "9",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "10",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 986.8333333333334,
+//           "pos_y": 798
+//         },
+//         "8": {
+//           "id": 8,
+//           "name": "variableSet",
+//           "data": {
+//             "id": 8,
+//             "name": "variableSet",
+//             "data": {
+//               "id": 8,
+//               "name": "variableSet",
+//               "data": {
+//                 "id": 8,
+//                 "name": "variableSet",
+//                 "data": {
+//                   "key": "incomingMessage"
+//                 },
+//                 "class": "variableSet",
+//                 "html": "variableSet",
+//                 "typenode": "vue",
+//                 "inputs": {
+//                   "input_1": {
+//                     "connections": []
+//                   }
+//                 },
+//                 "outputs": {
+//                   "output_1": {
+//                     "connections": []
+//                   }
+//                 },
+//                 "pos_x": 564.5234680175781,
+//                 "pos_y": 1243.0078430175781,
+//                 "key": "incomingMessage"
+//               },
+//               "class": "variableSet",
+//               "html": "variableSet",
+//               "typenode": "vue",
+//               "inputs": {
+//                 "input_1": {
+//                   "connections": [
+//                     {
+//                       "node": "6",
+//                       "input": "output_1"
+//                     }
+//                   ]
+//                 }
+//               },
+//               "outputs": {
+//                 "output_1": {
+//                   "connections": [
+//                     {
+//                       "node": "5",
+//                       "output": "input_1"
+//                     }
+//                   ]
+//                 }
+//               },
+//               "pos_x": 219,
+//               "pos_y": 797.2307692307693,
+//               "key": "incomingMessage"
+//             },
+//             "class": "variableSet",
+//             "html": "variableSet",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "6",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "5",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 219,
+//             "pos_y": 797.2307692307693
+//           },
+//           "class": "variableSet",
+//           "html": "variableSet",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "6",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "5",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 219,
+//           "pos_y": 794.5
+//         },
+//         "9": {
+//           "id": 9,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 9,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "True"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "7",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "11",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 1281,
+//             "pos_y": 598
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "7",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "11",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 1281,
+//           "pos_y": 598
+//         },
+//         "10": {
+//           "id": 10,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 10,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "False"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "7",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 1281.8333333333333,
+//             "pos_y": 1028
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "7",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 1281.8333333333333,
+//           "pos_y": 1028
+//         },
+//         "11": {
+//           "id": 11,
+//           "name": "llmGenerate",
+//           "data": {
+//             "id": 11,
+//             "name": "llmGenerate",
+//             "data": {
+//               "systemPrompt": "system_prompt",
+//               "userPrompt": "\"User says:\" + incomingMessage[\"text\"]"
+//             },
+//             "class": "llmGenerate",
+//             "html": "llmGenerate",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "9",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "13",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 1712,
+//             "pos_y": 576
+//           },
+//           "class": "llmGenerate",
+//           "html": "llmGenerate",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "9",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "13",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 1712,
+//           "pos_y": 576
+//         },
+//         "12": {
+//           "id": 12,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 12,
+//             "name": "globalVariable",
+//             "data": {
+//               "id": 12,
+//               "name": "globalVariable",
+//               "data": {
+//                 "key": "system_prompt",
+//                 "valueHolder": "This is new prompt",
+//                 "method": "string"
+//               },
+//               "class": "globalVariable",
+//               "html": "globalVariable",
+//               "typenode": "vue",
+//               "inputs": {},
+//               "outputs": {},
+//               "pos_x": 1306.0161590576167,
+//               "pos_y": 284.12837982177723,
+//               "key": "system_prompt",
+//               "valueholder": "This is new prompt",
+//               "valueHolder": "This is new prompt"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1301,
+//             "pos_y": 266
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1301,
+//           "pos_y": 266
+//         },
+//         "13": {
+//           "id": 13,
+//           "name": "extractOutput",
+//           "data": {},
+//           "class": "extractOutput",
+//           "html": "extractOutput",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "11",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "21",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 2077,
+//           "pos_y": 623
+//         },
+//         "14": {
+//           "id": 14,
+//           "name": "switch",
+//           "data": {
+//             "id": 14,
+//             "name": "switch",
+//             "data": {
+//               "input": "type"
+//             },
+//             "class": "switch",
+//             "html": "switch",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "21",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "15",
+//                     "output": "input_1"
+//                   },
+//                   {
+//                     "node": "16",
+//                     "output": "input_1"
+//                   },
+//                   {
+//                     "node": "17",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 2661,
+//             "pos_y": 604
+//           },
+//           "class": "switch",
+//           "html": "switch",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "21",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "15",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "16",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "17",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "24",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 2661,
+//           "pos_y": 604
+//         },
+//         "15": {
+//           "id": 15,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 15,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "text"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "14",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "18",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 2949,
+//             "pos_y": 326
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "14",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "18",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 2949,
+//           "pos_y": 326
+//         },
+//         "16": {
+//           "id": 16,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 16,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "function"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "14",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "22",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 3028,
+//             "pos_y": 604
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "14",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "22",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3028,
+//           "pos_y": 604
+//         },
+//         "17": {
+//           "id": 17,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 17,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "handle_assistant"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "14",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "23",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 2954,
+//             "pos_y": 879
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "14",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "23",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3031,
+//           "pos_y": 774
+//         },
+//         "18": {
+//           "id": 18,
+//           "name": "sendMessage",
+//           "data": {
+//             "id": 18,
+//             "name": "sendMessage",
+//             "data": {
+//               "userId": "incomingMessage[\"id\"]",
+//               "text": "llm_generated[\"text']"
+//             },
+//             "class": "sendMessage",
+//             "html": "sendMessage",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "15",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 3379,
+//             "pos_y": 302
+//           },
+//           "class": "sendMessage",
+//           "html": "sendMessage",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "15",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 3379,
+//           "pos_y": 302
+//         },
+//         "21": {
+//           "id": 21,
+//           "name": "variableSet",
+//           "data": {
+//             "id": 21,
+//             "name": "variableSet",
+//             "data": {
+//               "id": 21,
+//               "name": "variableSet",
+//               "data": {
+//                 "key": "llm_generated"
+//               },
+//               "class": "variableSet",
+//               "html": "variableSet",
+//               "typenode": "vue",
+//               "inputs": {
+//                 "input_1": {
+//                   "connections": []
+//                 }
+//               },
+//               "outputs": {
+//                 "output_1": {
+//                   "connections": []
+//                 }
+//               },
+//               "pos_x": 2379.3740012428975,
+//               "pos_y": 229.47265624999994,
+//               "key": "llm_generated"
+//             },
+//             "class": "variableSet",
+//             "html": "variableSet",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "13",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "14",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 2371,
+//             "pos_y": 196
+//           },
+//           "class": "variableSet",
+//           "html": "variableSet",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "13",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "14",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 2370,
+//           "pos_y": 196
+//         },
+//         "22": {
+//           "id": 22,
+//           "name": "functionWrapper",
+//           "data": {},
+//           "class": "functionWrapper",
+//           "html": "functionWrapper",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "16",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "35",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3383,
+//           "pos_y": 600.375
+//         },
+//         "23": {
+//           "id": 23,
+//           "name": "handleAssistant",
+//           "data": {
+//             "id": 23,
+//             "name": "handleAssistant",
+//             "data": {
+//               "key": "userInfoVariable "
+//             },
+//             "class": "handleAssistant",
+//             "html": "handleAssistant",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "17",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 3389,
+//             "pos_y": 881
+//           },
+//           "class": "handleAssistant",
+//           "html": "handleAssistant",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "17",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "36",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3379,
+//           "pos_y": 774
+//         },
+//         "24": {
+//           "id": 24,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 24,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "change_topic"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "14",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 3026,
+//             "pos_y": 961
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "14",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "34",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3037,
+//           "pos_y": 960.625
+//         },
+//         "27": {
+//           "id": 27,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 27,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "current_topic",
+//               "valueHolder": "",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1880.0283813476562,
+//             "pos_y": 93.26080322265625,
+//             "key": "current_topic",
+//             "valueholder": ""
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1714,
+//           "pos_y": 264
+//         },
+//         "28": {
+//           "id": 28,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 28,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "prompt_1",
+//               "valueHolder": "Testing we are testing",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1858.7661743164056,
+//             "pos_y": -41.12152099609375,
+//             "key": "prompt_1",
+//             "valueholder": "Testing we are testing"
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1061.625,
+//           "pos_y": -629
+//         },
+//         "29": {
+//           "id": 29,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 29,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "prompt_2",
+//               "valueHolder": "Testing we are testing",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1872.5161743164053,
+//             "pos_y": -224.87152099609366,
+//             "key": "prompt_2",
+//             "valueholder": "Testing we are testing"
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1391,
+//           "pos_y": -629
+//         },
+//         "30": {
+//           "id": 30,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 30,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "prompt_3",
+//               "valueHolder": "We are testing",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1863.76609802246,
+//             "pos_y": -520.4966735839843,
+//             "key": "prompt_3",
+//             "valueholder": "We are testing"
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1723,
+//           "pos_y": -628
+//         },
+//         "31": {
+//           "id": 31,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 31,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "prompt_4",
+//               "valueHolder": "Testing we are testing",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1334.3911743164058,
+//             "pos_y": -328.62167358398426,
+//             "key": "prompt_4",
+//             "valueholder": "Testing we are testing"
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1058,
+//           "pos_y": -351
+//         },
+//         "32": {
+//           "id": 32,
+//           "name": "globalVariable",
+//           "data": {
+//             "id": 32,
+//             "name": "globalVariable",
+//             "data": {
+//               "key": "prompt_5",
+//               "valueHolder": "Testing we are testing",
+//               "method": "string"
+//             },
+//             "class": "globalVariable",
+//             "html": "globalVariable",
+//             "typenode": "vue",
+//             "inputs": {},
+//             "outputs": {},
+//             "pos_x": 1501.2661743164058,
+//             "pos_y": -201.74659729003895,
+//             "key": "prompt_5",
+//             "valueholder": "Testing we are testing"
+//           },
+//           "class": "globalVariable",
+//           "html": "globalVariable",
+//           "typenode": "vue",
+//           "inputs": {},
+//           "outputs": {},
+//           "pos_x": 1394,
+//           "pos_y": -348
+//         },
+//         "33": {
+//           "id": 33,
+//           "name": "llmGenerate",
+//           "data": {
+//             "id": 33,
+//             "name": "llmGenerate",
+//             "data": {
+//               "systemPrompt": "system_prompt",
+//               "userPrompt": "current_topic + \"\\nUser says:\" + incomingMessage[\"text\"]"
+//             },
+//             "class": "llmGenerate",
+//             "html": "llmGenerate",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "34",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 3781,
+//             "pos_y": 933
+//           },
+//           "class": "llmGenerate",
+//           "html": "llmGenerate",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "34",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "41",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3783,
+//           "pos_y": 940
+//         },
+//         "34": {
+//           "id": 34,
+//           "name": "changeTopic",
+//           "data": {
+//             "id": 34,
+//             "name": "changeTopic",
+//             "data": {
+//               "key": "current_topic = llm_generated[0]"
+//             },
+//             "class": "changeTopic",
+//             "html": "changeTopic",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": []
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 3570.057983398436,
+//             "pos_y": 1053.3367156982417,
+//             "key": "current_topic = llm_generated[0]"
+//           },
+//           "class": "changeTopic",
+//           "html": "changeTopic",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "24",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "33",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3380,
+//           "pos_y": 960
+//         },
+//         "35": {
+//           "id": 35,
+//           "name": "llmGenerate",
+//           "data": {
+//             "id": 35,
+//             "name": "llmGenerate",
+//             "data": {
+//               "systemPrompt": "system_prompt",
+//               "userPrompt": ""
+//             },
+//             "class": "llmGenerate",
+//             "html": "llmGenerate",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "22",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4454,
+//             "pos_y": 200
+//           },
+//           "class": "llmGenerate",
+//           "html": "llmGenerate",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "22",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 4451.888888888889,
+//           "pos_y": 200
+//         },
+//         "36": {
+//           "id": 36,
+//           "name": "switch",
+//           "data": {
+//             "id": 36,
+//             "name": "switch",
+//             "data": {
+//               "input": "status"
+//             },
+//             "class": "switch",
+//             "html": "switch",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "23",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": [
+//                   {
+//                     "node": "38",
+//                     "output": "input_1"
+//                   },
+//                   {
+//                     "node": "37",
+//                     "output": "input_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "pos_x": 3809,
+//             "pos_y": 776
+//           },
+//           "class": "switch",
+//           "html": "switch",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "23",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "38",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "37",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 3809,
+//           "pos_y": 776
+//         },
+//         "37": {
+//           "id": 37,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 37,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "True"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "36",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4359,
+//             "pos_y": 702
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "36",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "39",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 4359,
+//           "pos_y": 702
+//         },
+//         "38": {
+//           "id": 38,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 38,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "False"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "36",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4358,
+//             "pos_y": 860.625
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "36",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "40",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 4358,
+//           "pos_y": 860.625
+//         },
+//         "39": {
+//           "id": 39,
+//           "name": "sendMessage",
+//           "data": {
+//             "id": 39,
+//             "name": "sendMessage",
+//             "data": {
+//               "userId": "incomingMessage[\"id\"]",
+//               "text": "\"Амжилттай явууллаа\""
+//             },
+//             "class": "sendMessage",
+//             "html": "sendMessage",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "37",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4860,
+//             "pos_y": 546.625
+//           },
+//           "class": "sendMessage",
+//           "html": "sendMessage",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "37",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 4860,
+//           "pos_y": 546
+//         },
+//         "40": {
+//           "id": 40,
+//           "name": "sendMessage",
+//           "data": {
+//             "id": 40,
+//             "name": "sendMessage",
+//             "data": {
+//               "userId": "incomingMessage[\"id\"]",
+//               "text": "\"Алдаа гарлаа\""
+//             },
+//             "class": "sendMessage",
+//             "html": "sendMessage",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "38",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4863,
+//             "pos_y": 830
+//           },
+//           "class": "sendMessage",
+//           "html": "sendMessage",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "38",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 4864,
+//           "pos_y": 835
+//         },
+//         "41": {
+//           "id": 41,
+//           "name": "extractOutput",
+//           "data": {},
+//           "class": "extractOutput",
+//           "html": "extractOutput",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "33",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "42",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 4066,
+//           "pos_y": 1527
+//         },
+//         "42": {
+//           "id": 42,
+//           "name": "variableSet",
+//           "data": {
+//             "id": 42,
+//             "name": "variableSet",
+//             "data": {
+//               "key": "llm_generated"
+//             },
+//             "class": "variableSet",
+//             "html": "variableSet",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": []
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4616.145019531249,
+//             "pos_y": 1553.7032645089284,
+//             "key": "llm_generated"
+//           },
+//           "class": "variableSet",
+//           "html": "variableSet",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "41",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "43",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 4509,
+//           "pos_y": 1509.4285714285713
+//         },
+//         "43": {
+//           "id": 43,
+//           "name": "switch",
+//           "data": {
+//             "id": 43,
+//             "name": "switch",
+//             "data": {
+//               "input": "type"
+//             },
+//             "class": "switch",
+//             "html": "switch",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "42",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 4928,
+//             "pos_y": 1505
+//           },
+//           "class": "switch",
+//           "html": "switch",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "42",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "44",
+//                   "output": "input_1"
+//                 },
+//                 {
+//                   "node": "46",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 4928,
+//           "pos_y": 1505
+//         },
+//         "44": {
+//           "id": 44,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 44,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "text"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "43",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 5216,
+//             "pos_y": 1231
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "43",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "45",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 5225,
+//           "pos_y": 1232.375
+//         },
+//         "45": {
+//           "id": 45,
+//           "name": "sendMessage",
+//           "data": {
+//             "id": 45,
+//             "name": "sendMessage",
+//             "data": {
+//               "userId": "incomingMessage[\"id\"]",
+//               "text": "llm_generated[\"text']"
+//             },
+//             "class": "sendMessage",
+//             "html": "sendMessage",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "44",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 5653,
+//             "pos_y": 1213
+//           },
+//           "class": "sendMessage",
+//           "html": "sendMessage",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "44",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 5654,
+//           "pos_y": 1208
+//         },
+//         "46": {
+//           "id": 46,
+//           "name": "switchCase",
+//           "data": {
+//             "id": 46,
+//             "name": "switchCase",
+//             "data": {
+//               "input": "function"
+//             },
+//             "class": "switchCase",
+//             "html": "switchCase",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "43",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 5209,
+//             "pos_y": 1788
+//           },
+//           "class": "switchCase",
+//           "html": "switchCase",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "43",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "47",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 5209,
+//           "pos_y": 1788
+//         },
+//         "47": {
+//           "id": 47,
+//           "name": "functionWrapper",
+//           "data": {},
+//           "class": "functionWrapper",
+//           "html": "functionWrapper",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "46",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": [
+//                 {
+//                   "node": "48",
+//                   "output": "input_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "pos_x": 5666,
+//           "pos_y": 1786
+//         },
+//         "48": {
+//           "id": 48,
+//           "name": "llmGenerate",
+//           "data": {
+//             "id": 48,
+//             "name": "llmGenerate",
+//             "data": {
+//               "systemPrompt": "system_prompt",
+//               "userPrompt": ""
+//             },
+//             "class": "llmGenerate",
+//             "html": "llmGenerate",
+//             "typenode": "vue",
+//             "inputs": {
+//               "input_1": {
+//                 "connections": [
+//                   {
+//                     "node": "47",
+//                     "input": "output_1"
+//                   }
+//                 ]
+//               }
+//             },
+//             "outputs": {
+//               "output_1": {
+//                 "connections": []
+//               }
+//             },
+//             "pos_x": 6110,
+//             "pos_y": 1761
+//           },
+//           "class": "llmGenerate",
+//           "html": "llmGenerate",
+//           "typenode": "vue",
+//           "inputs": {
+//             "input_1": {
+//               "connections": [
+//                 {
+//                   "node": "47",
+//                   "input": "output_1"
+//                 }
+//               ]
+//             }
+//           },
+//           "outputs": {
+//             "output_1": {
+//               "connections": []
+//             }
+//           },
+//           "pos_x": 6110,
+//           "pos_y": 1761
+//         }
+//       }
+//     }
+//   }
+// })
       
       })
 

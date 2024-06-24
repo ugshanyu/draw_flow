@@ -1,6 +1,6 @@
 <template>
     <div ref="el">
-        <nodeHeader title="VariableSet"/>
+        <nodeHeader title="Change"/>
         <p>Key</p>
         <el-input v-model="key" df-key placeholder="Key" size="small"></el-input>
     </div>

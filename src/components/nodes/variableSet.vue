@@ -34,8 +34,8 @@ export default defineComponent({
             nodeId.value = el.value.parentElement.parentElement.id.slice(5);
             dataNode.value = df.getNodeFromId(nodeId.value);
             let data = findDeepestData(dataNode.value);
-            console.log("dataNode.value",dataNode.value)
-            console.log("data",data)
+            // console.log("dataNode.value",dataNode.value)
+            // console.log("data",data)
             key.value = data.key;
         });
 
