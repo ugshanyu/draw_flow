@@ -1,86 +1,123 @@
 <template>
     <div ref="el">
-        <nodeHeader  title="Base Prompt"/>
-        <el-button type="info"  size="small" @click="drawer = true">Засах</el-button>
-        <teleport to="body">
-            <el-drawer
-            v-model="drawer"
-            title="Үндсэн заавар"
-            :direction="direction"
-            :before-close="handleClose"
-            >
-                <el-input
-                v-model="textarea"
-                :rows="8"
-                df-script
-                 @change="updateSelect" 
-                type="textarea"
-                placeholder="Үндсэн заавар"
-            />
-            </el-drawer>
-        </teleport>
-    
+      <nodeHeader title="Base Prompt" />
+      <p>Open in navbar</p>
+      <el-button type="info" size="small" @click="drawer = true">Edit</el-button>
+      <teleport to="body">
+        <el-drawer
+          v-model="drawer"
+          :direction="direction"
+          :before-close="handleClose"
+        >
+          <p>Base Prompt:</p>
+          <div class="prompt-editor">
+            <textarea
+              v-model="basePrompt"
+              :rows="10"
+              @input="handleInput"
+              placeholder="Enter your base prompt here"
+              class="prompt-textarea"
+            ></textarea>
+          </div>
+          <el-button 
+            :type="isSaved ? 'success' : 'primary'" 
+            @click="saveChanges"
+          >
+            {{ isSaved ? '✓ Saved' : 'Save' }}
+          </el-button>
+        </el-drawer>
+      </teleport>
     </div>
-    </template>
-    
-    <script>
-    import { defineComponent, ref, getCurrentInstance, nextTick, onMounted } from 'vue'
-    import nodeHeader from './nodeHeader.vue'
-    import { ElMessageBox } from 'element-plus'
-    
-    
-    export default defineComponent({
-        components: {
-            nodeHeader
-        },
-        setup() {
-            const el = ref(null);
-            const textarea = ref('');
-            let df = null
-            const nodeId = ref(0);
-            const dataNode = ref({});
-            const drawer = ref(false);
-            const direction = ref('rtl');
-            const handleClose = (done) => {
-                ElMessageBox.confirm('Are you sure you want to close this?')
-                    .then(() => {
-                    done()
-                    })
-                    .catch(() => {
-                    // catch error
-                    })
-            }
-         df = getCurrentInstance().appContext.config.globalProperties.$df.value;
-        
-         const updateSelect = (value) => {
-                dataNode.value.data.script = value;
-                df.updateNodeDataFromId(nodeId.value, dataNode.value);
-            }
-    
-         onMounted(async () => {
-                await nextTick()
-                nodeId.value = el.value.parentElement.parentElement.id.slice(5)
-                dataNode.value = df.getNodeFromId(nodeId.value)
-                textarea.value = dataNode.value.data.script;
-            });
-    
-        return {
-          el,
-          drawer,
-          direction,
-          handleClose,
-          textarea,
-          updateSelect
+  </template>
+  
+  <script>
+  import { defineComponent, ref, computed, getCurrentInstance, nextTick, onMounted } from 'vue'
+  import nodeHeader from './nodeHeader.vue'
+  
+  export default defineComponent({
+    components: {
+      nodeHeader
+    },
+    setup() {
+      const el = ref(null);
+      const basePrompt = ref('');
+      let df = null;
+      const nodeId = ref(0);
+      const dataNode = ref({});
+      const drawer = ref(false);
+      const direction = ref('rtl');
+      const savedBasePrompt = ref('');
+      const isSaved = computed(() => basePrompt.value === savedBasePrompt.value);
+  
+      const handleClose = (done) => {
+        if (!isSaved.value) {
+          if (confirm('You have unsaved changes. Are you sure you want to close this?')) {
+            done();
+          }
+        } else {
+          done();
         }
-        },
-        
-       
-    })
-    </script>
-    <style scoped>
-    p {
-        margin: 5px;
-        margin-bottom: 10px;
-    }
-    </style>
-    
+      }
+  
+      df = getCurrentInstance().appContext.config.globalProperties.$df.value;
+  
+      const handleInput = () => {
+        updateSelect();
+      }
+  
+      const updateSelect = () => {
+        dataNode.value.data.basePrompt = basePrompt.value;
+        df.updateNodeDataFromId(nodeId.value, dataNode.value);
+      }
+  
+      const saveChanges = () => {
+        savedBasePrompt.value = basePrompt.value;
+        updateSelect();
+      }
+  
+      onMounted(async () => {
+        await nextTick()
+        nodeId.value = el.value.parentElement.parentElement.id.slice(5)
+        dataNode.value = df.getNodeFromId(nodeId.value)
+        basePrompt.value = dataNode.value.data.basePrompt || '';
+        savedBasePrompt.value = basePrompt.value;
+      });
+  
+      return {
+        el,
+        drawer,
+        direction,
+        handleClose,
+        basePrompt,
+        handleInput,
+        saveChanges,
+        isSaved
+      }
+    },
+  })
+  </script>
+  
+  <style scoped>
+  p {
+    margin: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .prompt-editor {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .prompt-textarea {
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  </style>

@@ -10,7 +10,17 @@
           :direction="direction"
           :before-close="handleClose"
         >
-          <p>Autosave</p>
+          <p>Import Statements</p>
+          <div class="python-editor">
+            <textarea
+              v-model="importStatements"
+              :rows="4"
+              @input="handleInput"
+              placeholder="Enter import statements here"
+              class="python-textarea"
+            ></textarea>
+          </div>
+          <p>def handle_classified(user_message, sender_id, senderId_info):</p>
           <div class="python-editor">
             <textarea
               v-model="textarea"
@@ -43,13 +53,18 @@
     setup() {
       const el = ref(null);
       const textarea = ref('');
+      const importStatements = ref('');
       let df = null;
       const nodeId = ref(0);
       const dataNode = ref({});
       const drawer = ref(false);
       const direction = ref('rtl');
-      const savedValue = ref('');
-      const isSaved = computed(() => textarea.value === savedValue.value);
+      const savedTextarea = ref('');
+      const savedImportStatements = ref('');
+      const isSaved = computed(() => 
+        textarea.value === savedTextarea.value && 
+        importStatements.value === savedImportStatements.value
+      );
   
       const handleClose = (done) => {
         if (!isSaved.value) {
@@ -69,11 +84,13 @@
   
       const updateSelect = () => {
         dataNode.value.data.script = textarea.value;
+        dataNode.value.data.importStatements = importStatements.value;
         df.updateNodeDataFromId(nodeId.value, dataNode.value);
       }
   
       const saveChanges = () => {
-        savedValue.value = textarea.value;
+        savedTextarea.value = textarea.value;
+        savedImportStatements.value = importStatements.value;
         updateSelect();
       }
   
@@ -81,8 +98,10 @@
         await nextTick()
         nodeId.value = el.value.parentElement.parentElement.id.slice(5)
         dataNode.value = df.getNodeFromId(nodeId.value)
-        textarea.value = dataNode.value.data.script;
-        savedValue.value = textarea.value;
+        textarea.value = dataNode.value.data.script || '';
+        importStatements.value = dataNode.value.data.importStatements || '';
+        savedTextarea.value = textarea.value;
+        savedImportStatements.value = importStatements.value;
       });
   
       return {
@@ -91,6 +110,7 @@
         direction,
         handleClose,
         textarea,
+        importStatements,
         handleInput,
         saveChanges,
         isSaved
@@ -107,7 +127,7 @@
   
   .python-editor {
     width: 100%;
-    height: 400px;
+    height: 200px;
     margin-bottom: 10px;
   }
   

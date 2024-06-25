@@ -1,24 +1,25 @@
 <template>
-
-<el-container>
-  <el-header class="header">
+  <el-container>
+    <el-header class="header">
       <h3>Drawflow Example vue3</h3>
-      <el-button type="primary"   @click="exportEditor">Export</el-button>
-  </el-header>
-  <el-container class="container">
-    <el-aside width="250px" class="column">
-        <ul>
-            <li v-for="n in listNodes" :key="n" draggable="true" :data-node="n.item" @dragstart="drag($event)" class="drag-drawflow" >
-                <div class="node" :style="`background: ${n.color}`" >{{ n.name }}</div>
+      <el-button type="primary" @click="exportEditor">Export</el-button>
+    </el-header>
+    <el-container class="container">
+      <el-aside width="250px" class="column">
+        <div class="node-list-container">
+          <ul>
+            <li v-for="n in listNodes" :key="n" draggable="true" :data-node="n.item" @dragstart="drag($event)" class="drag-drawflow">
+              <div class="node" :style="`background: ${n.color}`">{{ n.name }}</div>
             </li>
-        </ul>
-    </el-aside>
-    <el-main>
+          </ul>
+        </div>
+      </el-aside>
+      <el-main>
         <div id="drawflow" @drop="drop($event)" @dragover="allowDrop($event)"></div>
-    </el-main>
+      </el-main>
+    </el-container>
   </el-container>
-</el-container>
-<el-dialog
+  <el-dialog
     v-model="dialogVisible"
     title="Export"
     width="50%"
@@ -28,9 +29,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >Confirm</el-button
-        >
+        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
       </span>
     </template>
   </el-dialog>
@@ -52,6 +51,7 @@ import GlobalVariable from './nodes/variable.vue'
 import LlmGenerate from './nodes/llmGenerate.vue'
 import FbWebhook from './nodes/fbWebhook.vue'
 import Switch from './nodes/switch.vue'
+import SwitchSelect from './nodes/switchSelect.vue'
 import SwitchCase from './nodes/switchCase.vue'
 import ExtractOutput from './nodes/extractOutput.vue'
 import FunctionWrapper from './nodes/functionWrapper.vue'
@@ -77,7 +77,7 @@ export default {
             color: 'blue',
             item: 'Node2',
             input:1,
-            output:2
+            output:1
         },
          {
             name: 'console.log',
@@ -91,7 +91,7 @@ export default {
             color: 'purple',
             item: 'base_prompt',
             input:0,
-            output:1
+            output:0
         },
         {
             name: 'Case prompt',
@@ -139,6 +139,13 @@ export default {
           name: 'Switch',
           color: 'darkblue',
           item: 'switch',
+          input:1,
+          output:1
+        },
+        {
+          name: 'SwitchSelect',
+          color: 'darkblue',
+          item: 'switchSelect',
           input:1,
           output:1
         },
@@ -279,6 +286,7 @@ export default {
        editor.value.registerNode('fbWebhook', FbWebhook, {}, {})
        editor.value.registerNode('switch', Switch, {}, {})
        editor.value.registerNode('switchCase', SwitchCase, {}, {})
+       editor.value.registerNode('switchSelect', SwitchSelect, {}, {})
        editor.value.registerNode('extractOutput', ExtractOutput, {}, {})
        editor.value.registerNode('functionWrapper', FunctionWrapper, {}, {})
        editor.value.registerNode('variableSet', VariableSet, {}, {})
@@ -290,66 +298,132 @@ export default {
   "drawflow": {
     "Home": {
       "data": {
-        "29": {
-          "id": 29,
-          "name": "globalVariable",
+        "74": {
+          "id": 74,
+          "name": "case_prompt",
           "data": {
-            "id": 29,
-            "name": "globalVariable",
+            "id": 74,
+            "name": "case_prompt",
             "data": {
-              "id": 29,
-              "name": "globalVariable",
+              "id": 74,
+              "name": "case_prompt",
               "data": {
-                "id": 29,
-                "name": "globalVariable",
+                "id": 74,
+                "name": "case_prompt",
                 "data": {
-                  "key": "prompt_2",
-                  "valueHolder": "Testing we are testing",
-                  "method": "string"
+                  "id": 74,
+                  "name": "case_prompt",
+                  "data": {
+                    "id": 74,
+                    "name": "case_prompt",
+                    "data": {
+                      "script": "213212312"
+                    },
+                    "class": "case_prompt",
+                    "html": "case_prompt",
+                    "typenode": "vue",
+                    "inputs": {
+                      "input_1": {
+                        "connections": []
+                      }
+                    },
+                    "outputs": {
+                      "output_1": {
+                        "connections": []
+                      }
+                    },
+                    "pos_x": 1179.828979492187,
+                    "pos_y": 833.4263916015623,
+                    "script": "44",
+                    "importStatements": "44"
+                  },
+                  "class": "case_prompt",
+                  "html": "case_prompt",
+                  "typenode": "vue",
+                  "inputs": {
+                    "input_1": {
+                      "connections": [
+                        {
+                          "node": "76",
+                          "input": "output_1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputs": {
+                    "output_1": {
+                      "connections": []
+                    }
+                  },
+                  "pos_x": 1310,
+                  "pos_y": 117.88888888888889,
+                  "script": "33333333333333333",
+                  "importStatements": "333"
                 },
-                "class": "globalVariable",
-                "html": "globalVariable",
+                "class": "case_prompt",
+                "html": "case_prompt",
                 "typenode": "vue",
-                "inputs": {},
-                "outputs": {},
-                "pos_x": 1872.5161743164053,
-                "pos_y": -224.87152099609366,
-                "key": "system_prompt",
-                "valueholder": "Testing we are testing",
-                "valueHolder": "Testing we are testing"
+                "inputs": {
+                  "input_1": {
+                    "connections": [
+                      {
+                        "node": "76",
+                        "input": "output_1"
+                      }
+                    ]
+                  }
+                },
+                "outputs": {
+                  "output_1": {
+                    "connections": []
+                  }
+                },
+                "pos_x": 1293.5,
+                "pos_y": 217,
+                "script": "Ting",
+                "importStatements": "Tes"
               },
-              "class": "globalVariable",
-              "html": "globalVariable",
+              "class": "case_prompt",
+              "html": "case_prompt",
               "typenode": "vue",
-              "inputs": {},
-              "outputs": {},
-              "pos_x": 1391,
-              "pos_y": -629,
-              "key": "prompt_2",
-              "valueHolder": "Testing we are testing"
+              "inputs": {
+                "input_1": {
+                  "connections": [
+                    {
+                      "node": "76",
+                      "input": "output_1"
+                    }
+                  ]
+                }
+              },
+              "outputs": {
+                "output_1": {
+                  "connections": []
+                }
+              },
+              "pos_x": 1293.5,
+              "pos_y": 217,
+              "script": "Ting",
+              "importStatements": "Test"
             },
-            "class": "globalVariable",
-            "html": "globalVariable",
+            "class": "case_prompt",
+            "html": "case_prompt",
             "typenode": "vue",
-            "inputs": {},
-            "outputs": {},
-            "pos_x": 1259,
-            "pos_y": 720
+            "inputs": {
+              "input_1": {
+                "connections": []
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 973,
+            "pos_y": 437
           },
-          "class": "globalVariable",
-          "html": "globalVariable",
-          "typenode": "vue",
-          "inputs": {},
-          "outputs": {},
-          "pos_x": 1259,
-          "pos_y": 720
-        },
-        "65": {
-          "id": 65,
-          "name": "Node2",
-          "data": {},
-          "class": "Node2",
-          "html": "Node2",
+          "class": "case_prompt",
+          "html": "case_prompt",
           "typenode": "vue",
           "inputs": {
             "input_1": {
@@ -359,13 +433,51 @@ export default {
           "outputs": {
             "output_1": {
               "connections": []
+            }
+          },
+          "pos_x": 973,
+          "pos_y": 437
+        },
+        "75": {
+          "id": 75,
+          "name": "switch",
+          "data": {
+            "id": 75,
+            "name": "switch",
+            "data": {
+              "input": "case1"
             },
-            "output_2": {
+            "class": "switch",
+            "html": "switch",
+            "typenode": "vue",
+            "inputs": {
+              "input_1": {
+                "connections": []
+              }
+            },
+            "outputs": {
+              "output_1": {
+                "connections": []
+              }
+            },
+            "pos_x": 584.9090909090909,
+            "pos_y": 444
+          },
+          "class": "switch",
+          "html": "switch",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
               "connections": []
             }
           },
-          "pos_x": 1258.5,
-          "pos_y": 554
+          "outputs": {
+            "output_1": {
+              "connections": []
+            }
+          },
+          "pos_x": 584.9090909090909,
+          "pos_y": 444
         }
       }
     }
@@ -2450,38 +2562,44 @@ export default {
 }
 
 </script>
+
 <style scoped>
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #494949;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #494949;
 }
 .container {
-    min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
 }
 .column {
-    border-right: 1px solid #494949;
+  border-right: 1px solid #494949;
+  display: flex;
+  flex-direction: column;
+}
+.node-list-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
 }
 .column ul {
-    padding-inline-start: 0px;
-    padding: 10px 10px;
- 
+  padding-inline-start: 0px;
+  padding: 10px 10px;
+  margin: 0;
 }
 .column li {
-    background: transparent;
+  background: transparent;
 }
-
 .node {
-    border-radius: 8px;
-    border: 2px solid #494949;
-    display: block;
-    height:60px;
-    line-height:40px;
-    padding: 10px;
-    margin: 10px 0px;
-    cursor: move;
-
+  border-radius: 8px;
+  border: 2px solid #494949;
+  display: block;
+  height: 60px;
+  line-height: 40px;
+  padding: 10px;
+  margin: 10px 0px;
+  cursor: move;
 }
 #drawflow {
   width: 100%;
@@ -2490,6 +2608,5 @@ export default {
   background: #2b2c30;
   background-size: 20px 20px;
   background-image: radial-gradient(#494949 1px, transparent 1px);
-  
 }
 </style>
