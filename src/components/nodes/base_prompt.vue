@@ -33,6 +33,7 @@
   <script>
   import { defineComponent, ref, computed, getCurrentInstance, nextTick, onMounted } from 'vue'
   import nodeHeader from './nodeHeader.vue'
+  import { findDeepestData } from '../../utils'
   
   export default defineComponent({
     components: {
@@ -66,8 +67,14 @@
       }
   
       const updateSelect = () => {
-        dataNode.value.data.basePrompt = basePrompt.value;
-        df.updateNodeDataFromId(nodeId.value, dataNode.value);
+        const nodeData = df.getNodeFromId(nodeId.value);
+        let deepData = findDeepestData(nodeData);
+        if (deepData) {
+          deepData.basePrompt = basePrompt.value;
+        } else {
+          nodeData.data = { basePrompt: basePrompt.value };
+        }
+        df.updateNodeDataFromId(nodeId.value, nodeData);
       }
   
       const saveChanges = () => {
@@ -78,8 +85,19 @@
       onMounted(async () => {
         await nextTick()
         nodeId.value = el.value.parentElement.parentElement.id.slice(5)
-        dataNode.value = df.getNodeFromId(nodeId.value)
-        basePrompt.value = dataNode.value.data.basePrompt || '';
+        const nodeData = df.getNodeFromId(nodeId.value);
+        console.log("Initial node data:", nodeData);
+        
+        let deepData = findDeepestData(nodeData);
+        console.log("Deepest data found:", deepData);
+        
+        if (deepData && deepData.basePrompt !== undefined) {
+          basePrompt.value = deepData.basePrompt;
+          console.log("Base prompt value set to:", basePrompt.value);
+        } else {
+          console.warn("No base prompt data found in the deepest object");
+          basePrompt.value = ''; // Set a default value
+        }
         savedBasePrompt.value = basePrompt.value;
       });
   

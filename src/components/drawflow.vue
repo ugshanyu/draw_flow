@@ -478,6 +478,119 @@ export default {
           },
           "pos_x": 584.9090909090909,
           "pos_y": 444
+        },
+        "76": {
+          "id": 76,
+          "name": "base_prompt",
+          "data": {
+            "id": 76,
+            "name": "base_prompt",
+            "data": {
+              "id": 76,
+              "name": "base_prompt",
+              "data": {
+                "id": 76,
+                "name": "base_prompt",
+                "data": {
+                  "id": 76,
+                  "name": "base_prompt",
+                  "data": {
+                    "id": 76,
+                    "name": "base_prompt",
+                    "data": {
+                      "id": 76,
+                      "name": "base_prompt",
+                      "data": {
+                        "id": 76,
+                        "name": "base_prompt",
+                        "data": {
+                          "id": 76,
+                          "name": "base_prompt",
+                          "data": {
+                            "id": 76,
+                            "name": "base_prompt",
+                            "data": {
+                              "basePrompt": "what"
+                            },
+                            "class": "base_prompt",
+                            "html": "base_prompt",
+                            "typenode": "vue",
+                            "inputs": {},
+                            "outputs": {},
+                            "pos_x": 877,
+                            "pos_y": 288
+                          },
+                          "class": "base_prompt",
+                          "html": "base_prompt",
+                          "typenode": "vue",
+                          "inputs": {},
+                          "outputs": {},
+                          "pos_x": 877,
+                          "pos_y": 288
+                        },
+                        "class": "base_prompt",
+                        "html": "base_prompt",
+                        "typenode": "vue",
+                        "inputs": {},
+                        "outputs": {},
+                        "pos_x": 877,
+                        "pos_y": 288
+                      },
+                      "class": "base_prompt",
+                      "html": "base_prompt",
+                      "typenode": "vue",
+                      "inputs": {},
+                      "outputs": {},
+                      "pos_x": 877,
+                      "pos_y": 288
+                    },
+                    "class": "base_prompt",
+                    "html": "base_prompt",
+                    "typenode": "vue",
+                    "inputs": {},
+                    "outputs": {},
+                    "pos_x": 877,
+                    "pos_y": 288
+                  },
+                  "class": "base_prompt",
+                  "html": "base_prompt",
+                  "typenode": "vue",
+                  "inputs": {},
+                  "outputs": {},
+                  "pos_x": 877,
+                  "pos_y": 288
+                },
+                "class": "base_prompt",
+                "html": "base_prompt",
+                "typenode": "vue",
+                "inputs": {},
+                "outputs": {},
+                "pos_x": 877,
+                "pos_y": 288
+              },
+              "class": "base_prompt",
+              "html": "base_prompt",
+              "typenode": "vue",
+              "inputs": {},
+              "outputs": {},
+              "pos_x": 877,
+              "pos_y": 288
+            },
+            "class": "base_prompt",
+            "html": "base_prompt",
+            "typenode": "vue",
+            "inputs": {},
+            "outputs": {},
+            "pos_x": 877,
+            "pos_y": 288
+          },
+          "class": "base_prompt",
+          "html": "base_prompt",
+          "typenode": "vue",
+          "inputs": {},
+          "outputs": {},
+          "pos_x": 877,
+          "pos_y": 288
         }
       }
     }
