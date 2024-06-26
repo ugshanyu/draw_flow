@@ -12,12 +12,11 @@
           <p>Base Prompt:</p>
           <div class="prompt-editor">
             <textarea
-              v-model="basePrompt"
-              :rows="10"
-              @input="handleInput"
-              placeholder="Enter your base prompt here"
-              class="prompt-textarea"
-            ></textarea>
+  v-model="basePrompt"
+  :rows="10"
+  placeholder="Enter your base prompt here"
+  class="prompt-textarea"
+></textarea>
           </div>
           <el-button 
             :type="isSaved ? 'success' : 'primary'" 
@@ -74,12 +73,12 @@
         } else {
           nodeData.data = { basePrompt: basePrompt.value };
         }
-        df.updateNodeDataFromId(nodeId.value, nodeData);
+        df.updateNodeDataFromId(nodeId.value, { basePrompt: basePrompt.value });
       }
   
       const saveChanges = () => {
         savedBasePrompt.value = basePrompt.value;
-        updateSelect();
+        updateSelect(); // This will now update the model only when save is clicked.
       }
   
       onMounted(async () => {
