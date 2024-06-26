@@ -1,20 +1,19 @@
 <template>
     <div ref="el">
-      <nodeHeader title="Base Prompt" />
+      <nodeHeader title="Base prompt" />
       <p>Open in navbar</p>
-      <el-button type="info" size="small" @click="drawer = true">Edit</el-button>
+      <el-button type="info" size="small" @click="drawer = true">Base prompt</el-button>
       <teleport to="body">
         <el-drawer
           v-model="drawer"
           :direction="direction"
           :before-close="handleClose"
         >
-          <p>Base Prompt:</p>
+          <p>Base prompt:</p>
           <div class="prompt-editor">
             <textarea
-              v-model="basePrompt"
+              v-model="nodeData.data.basePrompt"
               :rows="10"
-              @input="handleInput"
               placeholder="Enter your base prompt here"
               class="prompt-textarea"
             ></textarea>
@@ -31,9 +30,8 @@
   </template>
   
   <script>
-  import { defineComponent, ref, computed, getCurrentInstance, nextTick, onMounted } from 'vue'
+  import { defineComponent, ref, computed, watch, getCurrentInstance, nextTick, onMounted } from 'vue'
   import nodeHeader from './nodeHeader.vue'
-  import { findDeepestData } from '../../utils'
   
   export default defineComponent({
     components: {
@@ -41,18 +39,21 @@
     },
     setup() {
       const el = ref(null);
-      const basePrompt = ref('');
+      const nodeData = ref({});
+      const savedBasePrompt = ref('');
       let df = null;
       const nodeId = ref(0);
-      const dataNode = ref({});
       const drawer = ref(false);
       const direction = ref('rtl');
-      const savedBasePrompt = ref('');
-      const isSaved = computed(() => basePrompt.value === savedBasePrompt.value);
+      const isSaved = computed(() => nodeData.value.data?.basePrompt === savedBasePrompt.value);
   
       const handleClose = (done) => {
         if (!isSaved.value) {
           if (confirm('You have unsaved changes. Are you sure you want to close this?')) {
+            if (nodeData.value.data) {
+                console.log("value", value)
+            //   nodeData.value.data.basePrompt = savedBasePrompt.value; // Reset to last saved value
+            }
             done();
           }
         } else {
@@ -62,43 +63,38 @@
   
       df = getCurrentInstance().appContext.config.globalProperties.$df.value;
   
-      const handleInput = () => {
-        updateSelect();
-      }
-  
-      const updateSelect = () => {
-        const nodeData = df.getNodeFromId(nodeId.value);
-        let deepData = findDeepestData(nodeData);
-        if (deepData) {
-          deepData.basePrompt = basePrompt.value;
-        } else {
-          nodeData.data = { basePrompt: basePrompt.value };
-        }
-        df.updateNodeDataFromId(nodeId.value, nodeData);
+      const updateNodeData = () => {
+        df.updateNodeDataFromId(nodeId.value, nodeData.value);
       }
   
       const saveChanges = () => {
-        savedBasePrompt.value = basePrompt.value;
-        updateSelect();
+        savedBasePrompt.value = nodeData.value.data?.basePrompt || '';
+        updateNodeData();
       }
+  
+      watch(() => nodeData.value, (newVal) => {
+        if (newVal && typeof newVal === 'object') {
+          if (!newVal.data || typeof newVal.data !== 'object') {
+            newVal.data = {};
+          }
+          if (!newVal.data.hasOwnProperty('basePrompt')) {
+            newVal.data.basePrompt = '';
+          }
+        }
+      }, { deep: true });
   
       onMounted(async () => {
         await nextTick()
         nodeId.value = el.value.parentElement.parentElement.id.slice(5)
-        const nodeData = df.getNodeFromId(nodeId.value);
-        console.log("Initial node data:", nodeData);
+        nodeData.value = df.getNodeFromId(nodeId.value);
         
-        let deepData = findDeepestData(nodeData);
-        console.log("Deepest data found:", deepData);
-        
-        if (deepData && deepData.basePrompt !== undefined) {
-          basePrompt.value = deepData.basePrompt;
-          console.log("Base prompt value set to:", basePrompt.value);
-        } else {
-          console.warn("No base prompt data found in the deepest object");
-          basePrompt.value = ''; // Set a default value
+        if (!nodeData.value.data || typeof nodeData.value.data !== 'object') {
+          nodeData.value.data = {};
         }
-        savedBasePrompt.value = basePrompt.value;
+        if (!nodeData.value.data.hasOwnProperty('basePrompt')) {
+          nodeData.value.data.basePrompt = '';
+        }
+        savedBasePrompt.value = nodeData.value.data.basePrompt;
       });
   
       return {
@@ -106,8 +102,7 @@
         drawer,
         direction,
         handleClose,
-        basePrompt,
-        handleInput,
+        nodeData,
         saveChanges,
         isSaved
       }

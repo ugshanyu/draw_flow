@@ -6,29 +6,17 @@
       <teleport to="body">
         <el-drawer
           v-model="drawer"
-          title="Edit Options"
           :direction="direction"
           :before-close="handleClose"
         >
-          <p>Import Statements</p>
-          <div class="python-editor">
+          <p>Case Prompt:</p>
+          <div class="prompt-editor">
             <textarea
-              v-model="importStatements"
-              :rows="4"
+              v-model="casePrompt"
+              :rows="10"
               @input="handleInput"
-              placeholder="Enter import statements here"
-              class="python-textarea"
-            ></textarea>
-          </div>
-          <p>def handle_classified(user_message, sender_id, senderId_info):</p>
-          <div class="python-editor">
-            <textarea
-              v-model="textarea"
-              :rows="4"
-              df-script
-              @input="handleInput"
-              placeholder="Please input your Python code here"
-              class="python-textarea"
+              placeholder="Enter your case prompt here"
+              class="prompt-textarea"
             ></textarea>
           </div>
           <el-button 
@@ -45,6 +33,7 @@
   <script>
   import { defineComponent, ref, computed, getCurrentInstance, nextTick, onMounted } from 'vue'
   import nodeHeader from './nodeHeader.vue'
+  import { findDeepestData } from '../../utils'
   
   export default defineComponent({
     components: {
@@ -52,19 +41,14 @@
     },
     setup() {
       const el = ref(null);
-      const textarea = ref('');
-      const importStatements = ref('');
+      const casePrompt = ref('');
       let df = null;
       const nodeId = ref(0);
       const dataNode = ref({});
       const drawer = ref(false);
       const direction = ref('rtl');
-      const savedTextarea = ref('');
-      const savedImportStatements = ref('');
-      const isSaved = computed(() => 
-        textarea.value === savedTextarea.value && 
-        importStatements.value === savedImportStatements.value
-      );
+      const savedCasePrompt = ref('');
+      const isSaved = computed(() => casePrompt.value === savedCasePrompt.value);
   
       const handleClose = (done) => {
         if (!isSaved.value) {
@@ -83,25 +67,38 @@
       }
   
       const updateSelect = () => {
-        dataNode.value.data.script = textarea.value;
-        dataNode.value.data.importStatements = importStatements.value;
-        df.updateNodeDataFromId(nodeId.value, dataNode.value);
+        const nodeData = df.getNodeFromId(nodeId.value);
+        let deepData = findDeepestData(nodeData);
+        if (deepData) {
+          deepData.casePrompt = casePrompt.value;
+        } else {
+          nodeData.data = { casePrompt: casePrompt.value };
+        }
+        df.updateNodeDataFromId(nodeId.value, nodeData);
       }
   
       const saveChanges = () => {
-        savedTextarea.value = textarea.value;
-        savedImportStatements.value = importStatements.value;
+        savedCasePrompt.value = casePrompt.value;
         updateSelect();
       }
   
       onMounted(async () => {
         await nextTick()
         nodeId.value = el.value.parentElement.parentElement.id.slice(5)
-        dataNode.value = df.getNodeFromId(nodeId.value)
-        textarea.value = dataNode.value.data.script || '';
-        importStatements.value = dataNode.value.data.importStatements || '';
-        savedTextarea.value = textarea.value;
-        savedImportStatements.value = importStatements.value;
+        const nodeData = df.getNodeFromId(nodeId.value);
+        console.log("Initial node data:", nodeData);
+        
+        let deepData = findDeepestData(nodeData);
+        console.log("Deepest data found:", deepData);
+        
+        if (deepData && deepData.casePrompt !== undefined) {
+          casePrompt.value = deepData.casePrompt;
+          console.log("Case prompt value set to:", casePrompt.value);
+        } else {
+          console.warn("No case prompt data found in the deepest object");
+          casePrompt.value = ''; // Set a default value
+        }
+        savedCasePrompt.value = casePrompt.value;
       });
   
       return {
@@ -109,8 +106,7 @@
         drawer,
         direction,
         handleClose,
-        textarea,
-        importStatements,
+        casePrompt,
         handleInput,
         saveChanges,
         isSaved
@@ -125,13 +121,13 @@
     margin-bottom: 10px;
   }
   
-  .python-editor {
+  .prompt-editor {
     width: 100%;
-    height: 200px;
+    height: 300px;
     margin-bottom: 10px;
   }
   
-  .python-textarea {
+  .prompt-textarea {
     width: 100%;
     height: 100%;
     font-family: monospace;
@@ -143,3 +139,4 @@
     resize: vertical;
   }
   </style>
+  
