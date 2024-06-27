@@ -28,7 +28,7 @@
       const updateNodeData = () => {
         const nodeData = df.getNodeFromId(nodeId.value);
         nodeData.data = { selectedOption: selectedOption.value };
-        df.updateNodeDataFromId(nodeId.value, nodeData);
+        df.updateNodeDataFromId(nodeId.value, { selectedOption: selectedOption.value });
       };
   
       // Watch for changes in the selected option and update node data accordingly

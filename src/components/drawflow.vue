@@ -298,28 +298,15 @@ export default {
   "drawflow": {
     "Home": {
       "data": {
-        "80": {
-          "id": 80,
-          "name": "base_prompt",
+        "93": {
+          "id": 93,
+          "name": "Node2",
           "data": {
-            "basePrompt": "HelloWHatAreYou"
+            "script": "3210123",
+            "importStatements": "3321233"
           },
-          "class": "base_prompt",
-          "html": "base_prompt",
-          "typenode": "vue",
-          "inputs": {},
-          "outputs": {},
-          "pos_x": 722,
-          "pos_y": 527
-        },
-        "81": {
-          "id": 81,
-          "name": "case_prompt",
-          "data": {
-            "casePrompt": "Case Hello"
-          },
-          "class": "case_prompt",
-          "html": "case_prompt",
+          "class": "Node2",
+          "html": "Node2",
           "typenode": "vue",
           "inputs": {
             "input_1": {
@@ -331,8 +318,8 @@ export default {
               "connections": []
             }
           },
-          "pos_x": 328,
-          "pos_y": 186
+          "pos_x": 186,
+          "pos_y": 155
         }
       }
     }
