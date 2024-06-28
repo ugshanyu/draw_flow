@@ -291,33 +291,6 @@ export default {
   "drawflow": {
     "Home": {
       "data": {
-<<<<<<< HEAD
-        "66": {
-          "id": 66,
-          "name": "base_prompt",
-          "data": {
-            "id": 66,
-            "name": "base_prompt",
-            "data": {
-              "basePrompt": "TestingTesting2"
-            },
-            "class": "base_prompt",
-            "html": "base_prompt",
-            "typenode": "vue",
-            "inputs": {},
-            "outputs": {
-              "output_1": {
-                "connections": []
-              }
-            },
-            "pos_x": 403,
-            "pos_y": 141
-          },
-          "class": "base_prompt",
-          "html": "base_prompt",
-          "typenode": "vue",
-          "inputs": {},
-=======
         "93": {
           "id": 93,
           "name": "Node2",
@@ -333,30 +306,18 @@ export default {
               "connections": []
             }
           },
->>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
           "outputs": {
             "output_1": {
               "connections": []
             }
           },
-<<<<<<< HEAD
-          "pos_x": 403,
-          "pos_y": 141
-=======
           "pos_x": 186,
           "pos_y": 155
->>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
         }
       }
     }
   }
-<<<<<<< HEAD
-}
-       )
-
-=======
 })
->>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
       
       })
 
