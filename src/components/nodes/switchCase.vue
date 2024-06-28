@@ -23,8 +23,8 @@ export default defineComponent({
       // Function to handle data updates
       const updateNodeData = () => {
           const nodeData = df.getNodeFromId(nodeId.value);
-          nodeData.data = { input: input.value };
-          df.updateNodeDataFromId(nodeId.value, nodeData);
+        //   nodeData.data = { input: input.value };
+          df.updateNodeDataFromId(nodeId.value, { input: input.value });
       };
 
       // Watch for changes in the input field and update node data accordingly

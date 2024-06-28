@@ -85,7 +85,7 @@
       const updateSelect = () => {
         dataNode.value.data.script = textarea.value;
         dataNode.value.data.importStatements = importStatements.value;
-        df.updateNodeDataFromId(nodeId.value, dataNode.value);
+        df.updateNodeDataFromId(nodeId.value, dataNode.value.data);
       }
   
       const saveChanges = () => {

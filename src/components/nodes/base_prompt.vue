@@ -12,11 +12,19 @@
           <p>Base prompt:</p>
           <div class="prompt-editor">
             <textarea
+<<<<<<< HEAD
               v-model="nodeData.data.basePrompt"
               :rows="10"
               placeholder="Enter your base prompt here"
               class="prompt-textarea"
             ></textarea>
+=======
+  v-model="basePrompt"
+  :rows="10"
+  placeholder="Enter your base prompt here"
+  class="prompt-textarea"
+></textarea>
+>>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
           </div>
           <el-button 
             :type="isSaved ? 'success' : 'primary'" 
@@ -63,6 +71,7 @@
   
       df = getCurrentInstance().appContext.config.globalProperties.$df.value;
   
+<<<<<<< HEAD
       const updateNodeData = () => {
         df.updateNodeDataFromId(nodeId.value, nodeData.value);
       }
@@ -70,6 +79,26 @@
       const saveChanges = () => {
         savedBasePrompt.value = nodeData.value.data?.basePrompt || '';
         updateNodeData();
+=======
+      const handleInput = () => {
+        updateSelect();
+      }
+  
+      const updateSelect = () => {
+        const nodeData = df.getNodeFromId(nodeId.value);
+        let deepData = findDeepestData(nodeData);
+        if (deepData) {
+          deepData.basePrompt = basePrompt.value;
+        } else {
+          nodeData.data = { basePrompt: basePrompt.value };
+        }
+        df.updateNodeDataFromId(nodeId.value, { basePrompt: basePrompt.value });
+      }
+  
+      const saveChanges = () => {
+        savedBasePrompt.value = basePrompt.value;
+        updateSelect(); // This will now update the model only when save is clicked.
+>>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
       }
   
       watch(() => nodeData.value, (newVal) => {

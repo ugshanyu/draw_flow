@@ -291,6 +291,7 @@ export default {
   "drawflow": {
     "Home": {
       "data": {
+<<<<<<< HEAD
         "66": {
           "id": 66,
           "name": "base_prompt",
@@ -316,20 +317,46 @@ export default {
           "html": "base_prompt",
           "typenode": "vue",
           "inputs": {},
+=======
+        "93": {
+          "id": 93,
+          "name": "Node2",
+          "data": {
+            "script": "3210123",
+            "importStatements": "3321233"
+          },
+          "class": "Node2",
+          "html": "Node2",
+          "typenode": "vue",
+          "inputs": {
+            "input_1": {
+              "connections": []
+            }
+          },
+>>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
           "outputs": {
             "output_1": {
               "connections": []
             }
           },
+<<<<<<< HEAD
           "pos_x": 403,
           "pos_y": 141
+=======
+          "pos_x": 186,
+          "pos_y": 155
+>>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
         }
       }
     }
   }
+<<<<<<< HEAD
 }
        )
 
+=======
+})
+>>>>>>> e63bd6b851c4cfffee96d85037c81d58080c8c84
       
       })
 
